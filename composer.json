@@ -19,6 +19,7 @@
 	},
 	"require": {
 		"symfony/console": "~2.6",
-		"maslosoft/addendum": "~3.0"
+		"symfony/finder": "~2.6",
+		"phpunit/php-code-coverage": "~2.0"
 	}
 }

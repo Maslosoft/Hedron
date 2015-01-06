@@ -8,6 +8,7 @@
 
 namespace Maslosoft\Hedron\Commands;
 
+use Maslosoft\Hedron\Applier;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -36,7 +37,9 @@ EOT;
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-		$output->writeln("Following files will be modified:");
+		$output->writeln("Following files will be processed:");
+		$applier = new Applier($output);
+		$applier->listFiles();
 	}
 
 }

@@ -1,1 +1,1 @@
-/usr/bin/env php hedron.php
+/usr/bin/env php hedron.php "$@"
