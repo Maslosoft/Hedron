@@ -61,12 +61,12 @@ class Applier
 		if ($this->isSuccess())
 		{
 			// Success
-			$this->builder->writeln(sprintf('Modified %d files', array_sum($this->success)));
+			$this->output->writeln(sprintf('Modified %d files', array_sum($this->success)));
 		}
 		else
 		{
 			// Error
-			$this->builder->writeln(sprintf('Failed to modify %d files', count($this->success) - array_sum($this->success)));
+			$this->output->writeln(sprintf('Failed to modify %d files', count($this->success) - array_sum($this->success)));
 		}
 	}
 
@@ -155,13 +155,13 @@ class Applier
 			if ($success)
 			{
 				// Success
-				$this->builder->writeln(sprintf('Written %s', $file), OutputInterface::VERBOSITY_VERY_VERBOSE);
+				$this->output->writeln(sprintf('Written %s', $file), OutputInterface::VERBOSITY_VERY_VERBOSE);
 				$this->success[] = true;
 			}
 			else
 			{
 				// Success
-				$this->builder->writeln(sprintf('Failed %s', $file), OutputInterface::VERBOSITY_VERBOSE);
+				$this->output->writeln(sprintf('Failed %s', $file), OutputInterface::VERBOSITY_VERBOSE);
 				$this->success[] = false;
 			}
 		}
