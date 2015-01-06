@@ -9,6 +9,7 @@
 namespace Maslosoft\Hedron;
 
 use LightnCandy;
+use Maslosoft\Hedron\Helpers\StringHelper;
 
 /**
  * Renderer
@@ -30,14 +31,14 @@ class Renderer
 		file_put_contents($this->path, $str);
 	}
 
-	public function render($content = '')
+	public function render($params = [])
 	{
 		$renderer = require $this->path;
 
 		$extra = [
 			'year' => date('Y')
 		];
-		$result = $renderer(array_merge($extra, $this->config));
+		$result = $renderer(array_merge($extra, $this->config, $params));
 		$this->_wrapWithStars($result);
 		return $result;
 	}
@@ -48,19 +49,17 @@ class Renderer
 	 */
 	private function _wrapWithStars(&$text)
 	{
-		$newlines = preg_replace('/.*/', '', $text);
-		$newline = substr($newlines, 0, 1);
+		$newline = StringHelper::detectNewline($text);
 		$text = preg_replace('~^(.*)~m', '* \1', $text);
 		$text = "/**$newline$text$newline*/";
-		echo $text;
-		exit;
 	}
 
 	public function __destruct()
 	{
-		if(file_exists($this->path))
+		if (file_exists($this->path))
 		{
 			unlink($this->path);
 		}
 	}
+
 }

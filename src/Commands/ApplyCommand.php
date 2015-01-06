@@ -2,11 +2,10 @@
 
 namespace Maslosoft\Hedron\Commands;
 
+use Maslosoft\Hedron\Applier;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 
 class ApplyCommand extends Command
 {
@@ -26,7 +25,7 @@ EOT;
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-
+		(new Applier($output))->apply();
 	}
 
 }

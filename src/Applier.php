@@ -2,8 +2,8 @@
 
 namespace Maslosoft\Hedron;
 
-use LightnCandy;
 use Maslosoft\Hedron\Finder\Filter;
+use Maslosoft\Hedron\Helpers\StringHelper;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
@@ -11,6 +11,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class Applier
 {
+
 	public $config;
 
 	/**
@@ -25,6 +26,14 @@ class Applier
 	 */
 	private $filter = null;
 
+	/**
+	 *
+	 * @var Renderer
+	 */
+	private $renderer = null;
+	private $success = [];
+	private $processed = 0;
+
 	public function __construct(OutputInterface $output = null)
 	{
 		if (null === $output)
@@ -33,16 +42,20 @@ class Applier
 		}
 		$this->output = $output;
 		$this->config = (new Configuration())->load();
-
-		
+		$this->renderer = new Renderer($this->config);
 	}
 
 	public function apply()
 	{
-		foreach ($this->_getFiles() as $file)
+
+		foreach ($this->config['sources'] as $dir)
 		{
-			$this->_applyHeaders($file);
+			foreach ($this->_getFiles($dir) as $fileName)
+			{
+				$this->_applyHeaders(sprintf('%s/%s', $dir, $fileName));
+			}
 		}
+
 		// Notice
 		$this->output->writeln(sprintf('Processed %d files', $this->processed));
 		if ($this->isSuccess())
@@ -59,9 +72,7 @@ class Applier
 
 	public function listFiles()
 	{
-//		$dir = __DIR__ . '/../';
-		$dirs = $this->config['sources'];
-		foreach ((array) $dirs as $dir)
+		foreach ($this->config['sources'] as $dir)
 		{
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
@@ -114,6 +125,7 @@ class Applier
 		$source = file_get_contents($file);
 		$tokens = token_get_all($source);
 		$ns = '';
+		$line = 0;
 		foreach ($tokens as $i => $token)
 		{
 			if (is_string($token))
@@ -129,15 +141,17 @@ class Applier
 				break;
 			}
 		}
-		$new = false;
-		if ($ns == 'Maslosoft')
+		if(!$line)
 		{
-			$lines = array_slice(explode("\n", $source), $line - 1);
-			$new = sprintf("%s\n%s", $this->_header, implode("\n", $lines));
+			return;
 		}
-//		echo "<pre>$new";
-//		exit;
-		if (is_writable($file) && $new)
+		$n = StringHelper::detectNewline($source);
+		$lines = array_slice(explode($n, $source), $line - 1);
+		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
+		
+		echo "<pre>$new";
+		exit;
+		if (is_writable($file))
 		{
 			$success = file_put_contents($file, $new);
 			if ($success)
