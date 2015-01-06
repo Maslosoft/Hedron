@@ -30,14 +30,7 @@ class Applier
 			$output = new NullOutput();
 		}
 		$this->output = $output;
-		$filter = [
-			'blacklist' => [
-				'include' => [
-					'vendor/*'
-				]
-			]
-		];
-		$this->config['filter'] = $filter;
+		$this->config = (new Configuration())->load();
 	}
 
 	public function apply()
@@ -63,11 +56,14 @@ class Applier
 	public function listFiles()
 	{
 //		$dir = __DIR__ . '/../';
-		$dir = getcwd();
-		foreach ($this->_getFiles($dir) as $fileName)
+		$dirs = $this->config['sources'];
+		foreach ((array) $dirs as $dir)
 		{
-			// Notice
-			$this->output->writeln($fileName);
+			foreach ($this->_getFiles($dir) as $fileName)
+			{
+				// Notice
+				$this->output->writeln($fileName);
+			}
 		}
 	}
 

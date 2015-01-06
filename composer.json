@@ -20,6 +20,7 @@
 	"require": {
 		"symfony/console": "~2.6",
 		"symfony/finder": "~2.6",
-		"phpunit/php-code-coverage": "~2.0"
+		"phpunit/php-code-coverage": "~2.0",
+		"symfony/yaml": "~2.6"
 	}
 }
