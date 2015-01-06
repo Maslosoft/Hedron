@@ -10,6 +10,30 @@
 
     composer require maslosoft/hedron --dev
 
+## Usage
+
+Preview files to apply headers
+
+	vendor/bin/hedron preview
+	
+Display rendered template
+
+	vendor/bin/hedron rendertemplate
+	
+Apply header to all class files.
+
+<span style="background:red;color:white;">Backup/commit before continue</span>
+
+	vendor/bin/hedron apply
+	
+## Configuration
+
+Configuration can be provided in yaml file `.hedron.yaml` in root of your project.
+
+## Template
+
+
+	
 ## Resources
 
  * [Project website](http://maslosoft.com/hedron/)
