@@ -1,5 +1,16 @@
 <?php
 
+/**
+* This software package is licensed under New BSD license.
+* 
+* @package maslosoft/hedron
+* @licence New BSD
+* 
+* @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
+* 
+* @link http://maslosoft.com/hedron/
+*/
+
 namespace Maslosoft\Hedron;
 
 use Maslosoft\Hedron\Finder\Filter;
@@ -155,13 +166,13 @@ class Applier
 			if ($success)
 			{
 				// Success
-				$this->output->writeln(sprintf('Written %s', $file), OutputInterface::VERBOSITY_VERY_VERBOSE);
+				$this->output->writeln(sprintf('Written %s', $file));
 				$this->success[] = true;
 			}
 			else
 			{
-				// Success
-				$this->output->writeln(sprintf('Failed %s', $file), OutputInterface::VERBOSITY_VERBOSE);
+				// Fail
+				$this->output->writeln(sprintf('Failed %s', $file));
 				$this->success[] = false;
 			}
 		}
