@@ -149,8 +149,6 @@ class Applier
 		$lines = array_slice(explode($n, $source), $line - 1);
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
 		
-		echo "<pre>$new";
-		exit;
 		if (is_writable($file))
 		{
 			$success = file_put_contents($file, $new);
