@@ -35,26 +35,38 @@ class Configuration
 		$composer = $this->_loadComposerFile();
 		$config['filter'] = isset($config['filter']) ? $config['filter'] : [];
 
-		unset($config['sources']);
-
+		// Sources setup
 		if (!isset($config['sources']))
 		{
-			if (isset($composer->autoload))
+			if (isset($composer['autoload']))
 			{
-				$config['sources'] = $this->_extractAutoload($composer->autoload);
+				$config['sources'] = $this->_extractAutoload($composer['autoload']);
 			}
 		}
 		if (!is_array($config['sources']))
 		{
 			$config['sources'] = [$config['sources']];
 		}
+
+		// Template
+		if(empty($config['template']))
+		{
+			$config['template'] = sprintf('%s/templates/default.html', realpath(__DIR__ . '/..'));
+		}
+
+		if(empty($config['tmp']))
+		{
+			$config['tmp'] = sprintf('%s/tmp/', realpath(__DIR__ . '/..'));
+		}
+
+		$config['composer'] = $composer;
 		return $config;
 	}
 
 	private function _loadComposerFile()
 	{
 		$file = sprintf('%s/composer.json', $this->dir);
-		$composer = file_exists($file) ? json_decode(file_get_contents($file)) : array();
+		$composer = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
 		return $composer;
 	}
 

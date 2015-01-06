@@ -2,6 +2,7 @@
 
 namespace Maslosoft\Hedron;
 
+use LightnCandy;
 use Maslosoft\Hedron\Finder\Filter;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -10,6 +11,7 @@ use Symfony\Component\Finder\SplFileInfo;
 
 class Applier
 {
+	public $config;
 
 	/**
 	 * Output
@@ -31,6 +33,8 @@ class Applier
 		}
 		$this->output = $output;
 		$this->config = (new Configuration())->load();
+
+		
 	}
 
 	public function apply()

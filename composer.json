@@ -2,6 +2,7 @@
 	"name": "maslosoft/hedron",
 	"description": "PHP source code class header applier",
 	"license": "New BSD",
+	"homepage": "http://maslosoft.com/hedron/",
 	"authors": [
 		{
 			"name": "Peter Maselkowski",
@@ -21,6 +22,7 @@
 		"symfony/console": "~2.6",
 		"symfony/finder": "~2.6",
 		"phpunit/php-code-coverage": "~2.0",
-		"symfony/yaml": "~2.6"
+		"symfony/yaml": "~2.6",
+		"zordius/lightncandy": "0.18.*"
 	}
 }

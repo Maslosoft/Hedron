@@ -2,6 +2,7 @@
 
 use Maslosoft\Hedron\Commands\ApplyCommand;
 use Maslosoft\Hedron\Commands\PreviewCommand;
+use Maslosoft\Hedron\Commands\RenderTemplateCommand;
 use Symfony\Component\Console\Application;
 
 date_default_timezone_set('UTC');
@@ -24,6 +25,7 @@ if($argc == 1)
 $app = new Application('Hedron', '0.1.0');
 $app->addCommands([
 	new ApplyCommand(),
-	new PreviewCommand()
+	new PreviewCommand(),
+	new RenderTemplateCommand()
 ]);
 $app->run();
