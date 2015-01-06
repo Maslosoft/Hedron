@@ -69,7 +69,7 @@ class Applier
 
 		// Notice
 		$this->output->writeln(sprintf('Processed %d files', $this->processed));
-		if ($this->isSuccess())
+		if (count($this->success) == array_sum($this->success))
 		{
 			// Success
 			$this->output->writeln(sprintf('Modified %d files', array_sum($this->success)));
