@@ -395,10 +395,9 @@ pre code, pre tt {
 </head>
 <body>
     <a name="maslosoft_hedron"></a><h1>Maslosoft Hedron<a class="anchorlink" href="#maslosoft_hedron"></a></h1>
-<p><a href="https://scrutinizer-ci.com/g/Maslosoft/Hedron/?branch=master"><img src="https://scrutinizer-ci.com/g/Maslosoft/Hedron/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a>
-<a href="https://scrutinizer-ci.com/g/Maslosoft/Hedron/?branch=master"><img src="https://scrutinizer-ci.com/g/Maslosoft/Hedron/badges/coverage.png?b=master" alt="Code Coverage"></a>
-<img src="https://travis-ci.org/Maslosoft/Hedron.svg?branch=master" style="height:18px"/></p>
 <h6>PHP class header applier</h6>
+<p>Hedron helps you make your class headers up to date and consistent. It will apply predefined header to all files containing namespaced class definitions.</p>
+<p><a href="https://scrutinizer-ci.com/g/Maslosoft/Hedron/?branch=master"><img src="https://scrutinizer-ci.com/g/Maslosoft/Hedron/badges/quality-score.png?b=master" alt="Scrutinizer Code Quality"></a></p>
 <a name="instalation"></a><h2>Instalation<a class="anchorlink" href="#instalation"></a></h2>
 <pre class="prettyprint">composer require maslosoft/hedron --dev</pre>
 <a name="usage"></a><h2>Usage<a class="anchorlink" href="#usage"></a></h2>
@@ -407,11 +406,59 @@ pre code, pre tt {
 <p>Display rendered template</p>
 <pre class="prettyprint">vendor/bin/hedron rendertemplate</pre>
 <p>Apply header to all class files.</p>
-<p><span style="background:red;color:white;">Backup/commit before continue</span></p>
+<p><span style="background:red;color:white;">Backup/commit your project before continue.</span>
+This will write headers to files.</p>
 <pre class="prettyprint">vendor/bin/hedron apply</pre>
 <a name="configuration"></a><h2>Configuration<a class="anchorlink" href="#configuration"></a></h2>
-<p>Configuration can be provided in yaml file <code>.hedron.yaml</code> in root of your project.</p>
+<p>Configuration can be provided in yaml file <code>.hedron.yml</code> in root of your project.
+Hedron also uses <code>composer.json</code> to make your config easier, or even unnessesary.</p>
+<p>Here is example with default values (<code>.hedron.example.yml</code>):</p>
+<pre class="prettyprint"># All paths are realtive to your project root
+# Root path or paths with sources. If blank will use composer.autoload paths.
+sources: &quot;&quot;
+# Path to template file, if blank will use vendor/maslosoft/hedron/templates/default.html (no it&#39;s not html)
+template: &quot;&quot;
+# Filter configuration, by default empty. Below is some example filter.
+filter:
+    whitelist:
+        include:
+            - app/*
+        exclude:
+            - app/cache/*
+    blacklist:
+        include:
+            - app/controllers/*
+        exclude:
+            - app/cache/CacheProvider.php
+# Reserved 
+# This contains composer.json as array
+composer: &quot;&quot;
+tmp: &quot;&quot;</pre>
+<p>All of this configuration is available in template.</p>
 <a name="template"></a><h2>Template<a class="anchorlink" href="#template"></a></h2>
+<p>Template uses handlebars as templating engine. It contains all data from <code>.hedron.yml</code> and <code>composer.json</code>.</p>
+<p>Here is example, default template:</p>
+<pre class="prettyprint">This software package is licensed under {{composer.license}} license.
+
+@package {{composer.name}}
+@licence {{composer.license}}
+{{#each composer.authors}}
+@copyright Copyright (c) {{name}} &lt;{{email}}&gt;
+{{/each}}
+{{#if composer.homepage}}@link {{composer.homepage}}{{/if}}</pre>
+<p>And after rendering it looks like that:</p>
+<pre class="prettyprint">/**
+* This software package is licensed under New BSD license.
+*
+* @package maslosoft/hedron
+* @licence New BSD
+*
+* @copyright Copyright (c) Peter Maselkowski &lt;pmaselkowski@gmail.com&gt;
+*
+* @link http://maslosoft.com/hedron/
+*/</pre>
+<a name="replacing"></a><h2>Replacing<a class="anchorlink" href="#replacing"></a></h2>
+<p>This script modifies source files in mass. For safety and robustness it uses native php tokenizer and replaces everything before <code>namespace</code> token. Only that. If there is no namespace declaration file will not be modified.</p>
 <a name="resources"></a><h2>Resources<a class="anchorlink" href="#resources"></a></h2>
 <ul class="list">
 <li><a href="http://maslosoft.com/hedron/">Project website</a></li>
