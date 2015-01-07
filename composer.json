@@ -10,8 +10,8 @@
 		}
 	],
 	"bin": [
-		"hedron",
-		"hedron.bat"
+		"bin/hedron",
+		"bin/hedron.bat"
 	],
 	"autoload": {
 		"psr-4": {
