@@ -89,7 +89,7 @@ And after rendering it looks like that:
 	
 ## Replacing
 
-This script modifies source files in mass. For safety and robustness it uses native php tokenizer and replaces everything before `namespace` token. Only that. If there is no namespace declaration file will not be modified.
+This script modifies source files en masse. For safety and robustness it uses native php tokenizer and replaces everything before `namespace` token. Only that. If there is no namespace declaration file will not be modified.
 	
 ## Resources
 
