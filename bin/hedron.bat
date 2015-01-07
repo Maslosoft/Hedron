@@ -1,3 +1,3 @@
 @ECHO OFF
-SET BIN_TARGET=%~dp0/../maslosoft/hedron/hedron.bat
-"%BIN_TARGET%" %*
+SET BIN_TARGET=%~dp0/../maslosoft/hedron/hedron
+php "%BIN_TARGET%" %*
