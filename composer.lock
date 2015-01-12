@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ddf1653585ce92ad600c64f7cd875c53",
+    "hash": "df15ea9b15d26995a40a9658da179f12",
     "packages": [
         {
             "name": "phpunit/php-code-coverage",
@@ -296,7 +296,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "target-dir": "Symfony/Component/Console",
             "source": {
                 "type": "git",
@@ -353,7 +353,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "target-dir": "Symfony/Component/Finder",
             "source": {
                 "type": "git",
@@ -400,7 +400,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.2",
+            "version": "v2.6.3",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
