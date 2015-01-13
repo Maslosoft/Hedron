@@ -56,6 +56,7 @@ class Renderer
 	{
 		$newline = StringHelper::detectNewline($text);
 		$text = preg_replace('~^(.*)~m', ' * \1', $text);
+		$text = preg_replace('~\s+$~m', '', $text);
 		$text = "/**$newline$text$newline */";
 	}
 
