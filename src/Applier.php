@@ -63,7 +63,7 @@ class Applier
 		{
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
-				$this->_applyHeaders(sprintf('%s/%s', $dir, $fileName));
+				$this->_applyHeaders(sprintf('%s%s', $dir, $fileName));
 			}
 		}
 
@@ -157,23 +157,42 @@ class Applier
 		{
 			return;
 		}
+		if(!$ns)
+		{
+			return;
+		}
 		$n = StringHelper::detectNewline($source);
 		$lines = array_slice(explode($n, $source), $line - 1);
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
 		
 		if (is_writable($file))
 		{
-			$success = file_put_contents($file, $new);
+			if($new == $source)
+			{
+				$success = true;
+			}
+			else
+			{
+				$success = file_put_contents($file, $new);
+			}
+			$niceFile = str_replace('/', DIRECTORY_SEPARATOR, ltrim($file, './\\'));
 			if ($success)
 			{
 				// Success
-				$this->output->writeln(sprintf('Written %s', $file));
-				$this->success[] = true;
+				if($new == $source)
+				{
+					$this->output->writeln(sprintf('Skipped %s', $niceFile));
+				}
+				else
+				{
+					$this->output->writeln(sprintf('Written %s', $niceFile));
+					$this->success[] = true;
+				}
 			}
 			else
 			{
 				// Fail
-				$this->output->writeln(sprintf('Failed %s', $file));
+				$this->output->writeln(sprintf('Failed %s', $niceFile));
 				$this->success[] = false;
 			}
 		}
