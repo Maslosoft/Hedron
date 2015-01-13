@@ -1,15 +1,15 @@
 <?php
 
 /**
-* This software package is licensed under New BSD license.
-* 
-* @package maslosoft/hedron
-* @licence New BSD
-* 
-* @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
-* 
-* @link http://maslosoft.com/hedron/
-*/
+ * This software package is licensed under New BSD license.
+ *
+ * @package maslosoft/hedron
+ * @licence New BSD
+ *
+ * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
+ *
+ * @link http://maslosoft.com/hedron/
+ */
 
 namespace Maslosoft\Hedron;
 
@@ -88,8 +88,8 @@ class Applier
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
 				// Notice
-				$niceDir = str_replace('/', DIRECTORY_SEPARATOR, ltrim($dir, './\\'));
-				$this->output->writeln($niceDir.$fileName);
+				$niceDir = str_replace('/', DIRECTORY_SEPARATOR, rtrim(ltrim($dir, './\\'), '/\\'));
+				$this->output->writeln($niceDir . DIRECTORY_SEPARATOR . $fileName);
 			}
 		}
 	}
@@ -153,21 +153,21 @@ class Applier
 				break;
 			}
 		}
-		if(!$line)
+		if (!$line)
 		{
 			return;
 		}
-		if(!$ns)
+		if (!$ns)
 		{
 			return;
 		}
 		$n = StringHelper::detectNewline($source);
 		$lines = array_slice(explode($n, $source), $line - 1);
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
-		
+
 		if (is_writable($file))
 		{
-			if($new == $source)
+			if ($new == $source)
 			{
 				$success = true;
 			}
@@ -179,9 +179,9 @@ class Applier
 			if ($success)
 			{
 				// Success
-				if($new == $source)
+				if ($new == $source)
 				{
-					if($this->output->isVerbose())
+					if ($this->output->isVerbose())
 					{
 						$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
 					}
