@@ -55,8 +55,8 @@ class Renderer
 	private function _wrapWithStars(&$text)
 	{
 		$newline = StringHelper::detectNewline($text);
-		$text = preg_replace('~^(.*)~m', '* \1', $text);
-		$text = "/**$newline$text$newline*/";
+		$text = preg_replace('~^(.*)~m', ' * \1', $text);
+		$text = "/**$newline$text$newline */";
 	}
 
 	public function __destruct()
