@@ -1,15 +1,15 @@
 <?php
 
 /**
-* This software package is licensed under New BSD license.
-* 
-* @package maslosoft/hedron
-* @licence New BSD
-* 
-* @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
-* 
-* @link http://maslosoft.com/hedron/
-*/
+ * This software package is licensed under New BSD license.
+ *
+ * @package maslosoft/hedron
+ * @licence New BSD
+ *
+ * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
+ *
+ * @link http://maslosoft.com/hedron/
+ */
 
 namespace Maslosoft\Hedron;
 
@@ -52,7 +52,12 @@ class Configuration
 		{
 			$config['sources'] = [$config['sources']];
 		}
-
+		foreach($config['sources'] as $key => $dir)
+		{
+			$dirFormatted = rtrim($dir, '/\\') . DIRECTORY_SEPARATOR;
+			$dirFormatted = preg_replace('~/\\\~', DIRECTORY_SEPARATOR, $dirFormatted);
+			$config['sources'][$key] = $dirFormatted;
+		}
 		// Template
 		if(empty($config['template']))
 		{

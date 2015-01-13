@@ -88,8 +88,8 @@ class Applier
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
 				// Notice
-				$niceDir = str_replace('/', DIRECTORY_SEPARATOR, rtrim(ltrim($dir, './\\'), '/\\'));
-				$this->output->writeln($niceDir . DIRECTORY_SEPARATOR . $fileName);
+				$niceDir = ltrim($dir, './\\');
+				$this->output->writeln(sprintf('%s%s', $niceDir, $fileName));
 			}
 		}
 	}
@@ -175,7 +175,7 @@ class Applier
 			{
 				$success = file_put_contents($file, $new);
 			}
-			$niceFile = str_replace('/', DIRECTORY_SEPARATOR, ltrim($file, './\\'));
+			$niceFile = ltrim($file, './\\');
 			if ($success)
 			{
 				// Success
