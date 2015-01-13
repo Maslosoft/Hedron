@@ -23,13 +23,13 @@ class ApplyCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName("apply");
+		$this->setName("apply:commit");
 		$this->setDescription("Apply headers to all php classes");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>apply</info> command applies informational headers to all of your project files containing class definitions.
+The <info>apply:show</info> command applies informational headers to all of your project files containing class definitions.
 EOT;
 		$this->setHelp($help);
 	}

@@ -28,13 +28,13 @@ class PreviewCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName("preview");
-		$this->setDescription("Show files to which headers will be applied");
+		$this->setName("apply:list");
+		$this->setDescription("Show list of files to which headers will be applied");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>preview</info> command will display files to which headers will be applied with <info>apply</info> command.
+The <info>apply:list</info> command will display files to which headers will be applied with <info>apply</info> command.
 				No files will be modified at this stage.
 EOT;
 		$this->setHelp($help);

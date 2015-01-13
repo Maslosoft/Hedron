@@ -12,20 +12,20 @@ Hedron helps you make your class headers up to date and consistent. It will appl
 
 ## Usage
 
-Preview files to apply headers
+Preview list of files to apply headers
 
-	vendor/bin/hedron preview
+	vendor/bin/hedron apply:list
 	
 Display rendered template
 
-	vendor/bin/hedron rendertemplate
+	vendor/bin/hedron apply:show
 	
 Apply header to all class files.
 
 <span style="background:red;color:white;">Backup/commit your project before continue.</span>
 This will write headers to files.
 
-	vendor/bin/hedron apply
+	vendor/bin/hedron apply:commit
 	
 ## Configuration
 

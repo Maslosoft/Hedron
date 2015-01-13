@@ -28,13 +28,13 @@ class RenderTemplateCommand extends Command
 {
 	protected function configure()
 	{
-		$this->setName("rendertemplate");
+		$this->setName("apply:show");
 		$this->setDescription("Show how current template will look like");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>rendertemplate</info> command will display header which will appear in each of your php class definition files.
+The <info>apply:show</info> command will display header which will appear in each of your php class definition files.
 				No files will be modified at this stage.
 EOT;
 		$this->setHelp($help);

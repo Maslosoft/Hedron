@@ -401,14 +401,14 @@ pre code, pre tt {
 <a name="instalation"></a><h2>Instalation<a class="anchorlink" href="#instalation"></a></h2>
 <pre class="prettyprint">composer require maslosoft/hedron --dev</pre>
 <a name="usage"></a><h2>Usage<a class="anchorlink" href="#usage"></a></h2>
-<p>Preview files to apply headers</p>
-<pre class="prettyprint">vendor/bin/hedron preview</pre>
+<p>Preview list of files to apply headers</p>
+<pre class="prettyprint">vendor/bin/hedron apply:list</pre>
 <p>Display rendered template</p>
-<pre class="prettyprint">vendor/bin/hedron rendertemplate</pre>
+<pre class="prettyprint">vendor/bin/hedron apply:show</pre>
 <p>Apply header to all class files.</p>
 <p><span style="background:red;color:white;">Backup/commit your project before continue.</span>
 This will write headers to files.</p>
-<pre class="prettyprint">vendor/bin/hedron apply</pre>
+<pre class="prettyprint">vendor/bin/hedron apply:commit</pre>
 <a name="configuration"></a><h2>Configuration<a class="anchorlink" href="#configuration"></a></h2>
 <p>Configuration can be provided in yaml file <code>.hedron.yml</code> in root of your project.
 Hedron also uses <code>composer.json</code> to make your config easier, or even unnessesary.</p>
