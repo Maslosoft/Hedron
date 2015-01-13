@@ -181,7 +181,10 @@ class Applier
 				// Success
 				if($new == $source)
 				{
-					$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
+					if($this->output->isVerbose())
+					{
+						$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
+					}
 				}
 				else
 				{
