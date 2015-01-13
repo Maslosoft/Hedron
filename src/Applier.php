@@ -88,7 +88,8 @@ class Applier
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
 				// Notice
-				$this->output->writeln($fileName);
+				$niceDir = str_replace('/', DIRECTORY_SEPARATOR, ltrim($dir, './\\'));
+				$this->output->writeln($niceDir.$fileName);
 			}
 		}
 	}
