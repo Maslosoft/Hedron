@@ -32,7 +32,7 @@ This will write headers to files.
 Configuration can be provided in yaml file `.hedron.yml` in root of your project.
 Hedron also uses `composer.json` to make your config easier, or even unnessesary.
 
-Here is example with example values (`.hedron.example.yml`):
+Here is how config might look like with example values (see `.hedron.example.yml`):
 
 	# All paths are realtive to your project root
 	# Root path or paths with sources. If blank will use composer.autoload paths.
