@@ -68,11 +68,11 @@ class Applier
 		}
 
 		// Notice
-		$this->output->writeln(sprintf('Processed %d files', $this->processed));
+		$this->output->writeln(sprintf('Processed <comment>%d</comment> files', $this->processed));
 		if (count($this->success) == array_sum($this->success))
 		{
 			// Success
-			$this->output->writeln(sprintf('Modified %d files', array_sum($this->success)));
+			$this->output->writeln(sprintf('Modified <info>%d</info> files', array_sum($this->success)));
 		}
 		else
 		{
@@ -181,11 +181,11 @@ class Applier
 				// Success
 				if($new == $source)
 				{
-					$this->output->writeln(sprintf('Skipped %s', $niceFile));
+					$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
 				}
 				else
 				{
-					$this->output->writeln(sprintf('Written %s', $niceFile));
+					$this->output->writeln(sprintf('<info>Written</info> %s', $niceFile));
 					$this->success[] = true;
 				}
 			}
