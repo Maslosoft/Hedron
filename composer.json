@@ -10,7 +10,7 @@
 		}
 	],
 	"bin": [
-		"bin/hedron"
+		"hedron"
 	],
 	"autoload": {
 		"psr-4": {

@@ -27,7 +27,7 @@ if($argc == 1)
 	echo str_replace("\n", PHP_EOL, $logo);
 	echo PHP_EOL;
 }
-$app = new Application('Hedron', '1.1.0');
+$app = new Application('Hedron', '1.1.2');
 $app->addCommands([
 	new ApplyCommand(),
 	new PreviewCommand(),
