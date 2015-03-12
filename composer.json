@@ -1,7 +1,10 @@
 {
 	"name": "maslosoft/hedron",
 	"description": "PHP source code class header applier",
-	"license": "AGPL or Commercial",
+	"license": [
+		"AGPL",
+		"Commercial"
+	],
 	"homepage": "http://maslosoft.com/hedron/",
 	"authors": [
 		{
