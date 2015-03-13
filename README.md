@@ -1,10 +1,24 @@
-#Maslosoft Hedron
+<!--header-->
+<!-- Auto generated do not modify between `header` and `/header` -->
 
-######PHP class header applier
+# <a href="http://maslosoft.com/hedron/">Maslosoft Hedron</a>
+<a href="http://maslosoft.com/hedron/">_PHP source code class header applier_</a>
+
+<a href="https://packagist.org/packages/maslosoft/hedron" title="Latest Stable Version">
+<img src="https://poser.pugx.org/maslosoft/hedron/v/stable.svg" alt="Latest Stable Version" style="height: 20px;"/>
+</a>
+<a href="https://packagist.org/packages/maslosoft/hedron" title="License">
+<img src="https://poser.pugx.org/maslosoft/hedron/license.svg" alt="License" style="height: 20px;"/>
+</a>
+
+### Quick Install
+```bash
+	composer require maslosoft/hedron:"*"
+```
+
+<!--/header-->
 
 Hedron helps you make your class headers up to date and consistent. It will apply predefined header to all files containing namespaced class definitions.
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Maslosoft/Hedron/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Maslosoft/Hedron/?branch=master)
 
 ## Instalation
 
