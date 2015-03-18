@@ -43,7 +43,22 @@ class Renderer
 		$extra = [
 			'year' => date('Y')
 		];
-		$result = $renderer(array_merge($extra, $this->config, $params));
+
+		if (isset($this->config['composer']['license']) && !isset($params['license']))
+		{
+			if (is_array($this->config['composer']['license']))
+			{
+				$extra['license'] = implode(', ', $this->config['composer']['license']);
+			}
+			else
+			{
+				$extra['license'] = $this->config['composer']['license'];
+			}
+		}
+		$data = array_merge($extra, $this->config, $params);
+		var_dump($this->config);
+		var_dump($data);
+		$result = $renderer($data);
 		$this->_wrapWithStars($result);
 		return $result;
 	}
