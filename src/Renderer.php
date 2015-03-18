@@ -62,7 +62,6 @@ class Renderer
 	}
 
 	/**
-	 *
 	 * @param type $text
 	 */
 	private function _wrapWithStars(&$text)
