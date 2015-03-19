@@ -23,13 +23,13 @@ class ApplyCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName("apply:commit");
+		$this->setName("commit");
 		$this->setDescription("Apply headers to all php classes");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>apply:show</info> command applies informational headers to all of your project files containing class definitions.
+The <info>show</info> command applies informational headers to all of your project files containing class definitions.
 EOT;
 		$this->setHelp($help);
 	}
@@ -39,4 +39,12 @@ EOT;
 		(new Applier($output))->apply();
 	}
 
+	/**
+	 * @SlotFor(Maslosoft\Sitcom\Command)
+	 * @param Maslosoft\Signals\Command $signal
+	 */
+	public function reactOn(\Maslosoft\Sitcom\Command $signal)
+	{
+		$signal->add($this, 'hedron');
+	}
 }

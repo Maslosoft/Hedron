@@ -28,13 +28,13 @@ class RenderTemplateCommand extends Command
 {
 	protected function configure()
 	{
-		$this->setName("apply:show");
+		$this->setName("show");
 		$this->setDescription("Show how current template will look like");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>apply:show</info> command will display header which will appear in each of your php class definition files.
+The <info>show</info> command will display header which will appear in each of your php class definition files.
 				No files will be modified at this stage.
 EOT;
 		$this->setHelp($help);
@@ -47,4 +47,12 @@ EOT;
 		$output->writeln($renderer->render());
 	}
 
+	/**
+	 * @SlotFor(Maslosoft\Sitcom\Command)
+	 * @param Maslosoft\Signals\Command $signal
+	 */
+	public function reactOn(\Maslosoft\Sitcom\Command $signal)
+	{
+		$signal->add($this, 'hedron');
+	}
 }

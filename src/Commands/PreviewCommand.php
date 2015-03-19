@@ -28,13 +28,13 @@ class PreviewCommand extends Command
 
 	protected function configure()
 	{
-		$this->setName("apply:list");
+		$this->setName("preview");
 		$this->setDescription("Show list of files to which headers will be applied");
 		$this->setDefinition([
 		]);
 
 		$help = <<<EOT
-The <info>apply:list</info> command will display files to which headers will be applied with <info>apply</info> command.
+The <info>preview</info> command will display files to which headers will be applied with <info>apply</info> command.
 				No files will be modified at this stage.
 EOT;
 		$this->setHelp($help);
@@ -47,4 +47,12 @@ EOT;
 		$applier->listFiles();
 	}
 
+	/**
+	 * @SlotFor(Maslosoft\Sitcom\Command)
+	 * @param Maslosoft\Signals\Command $signal
+	 */
+	public function reactOn(\Maslosoft\Sitcom\Command $signal)
+	{
+		$signal->add($this, 'hedron');
+	}
 }
