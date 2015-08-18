@@ -8,26 +8,29 @@ use Symfony\Component\Console\Application;
 
 date_default_timezone_set('UTC');
 
-if (file_exists(__DIR__.'/vendor/autoload.php')) {
-    require_once(__DIR__.'/vendor/autoload.php');
-} elseif (file_exists(__DIR__.'/../../autoload.php')) {
-    require_once __DIR__ . '/../../autoload.php';
+if (file_exists(__DIR__ . '/vendor/autoload.php'))
+{
+	require_once(__DIR__ . '/vendor/autoload.php');
+}
+elseif (file_exists(__DIR__ . '/../../autoload.php'))
+{
+	require_once __DIR__ . '/../../autoload.php';
 }
 
 $logo = <<<LOGO
-    __  __         __               
-   / / / /__  ____/ /________  ____ 
+    __  __         __
+   / / / /__  ____/ /________  ____
   / /_/ / _ \/ __  / ___/ __ \/ __ \
  / __  /  __/ /_/ / /  / /_/ / / / /
-/_/ /_/\___/\__,_/_/   \____/_/ /_/ 
+/_/ /_/\___/\__,_/_/   \____/_/ /_/
 
 LOGO;
-if($argc == 1)
+if ($argc == 1)
 {
 	echo str_replace("\n", PHP_EOL, $logo);
 	echo PHP_EOL;
 }
-$app = new Application('Hedron', '1.1.6');
+$app = new Application('Hedron', require __DIR__ . '/src/version.php');
 $app->addCommands([
 	new ApplyCommand(),
 	new PreviewCommand(),
