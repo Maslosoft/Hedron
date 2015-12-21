@@ -24,7 +24,7 @@
 		"symfony/console": "~2",
 		"symfony/finder": "~2",
 		"phpunit/php-code-coverage": "~2",
-		"symfony/yaml": "~2",
+		"symfony/yaml": "~3",
 		"zordius/lightncandy": "0.18.*"
 	}
 }
