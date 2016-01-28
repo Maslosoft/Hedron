@@ -21,8 +21,8 @@
 		}
 	},
 	"require": {
-		"symfony/console": "~2",
-		"symfony/finder": "~2",
+		"symfony/console": "~3",
+		"symfony/finder": "~3",
 		"phpunit/php-code-coverage": "~2",
 		"symfony/yaml": "~3",
 		"zordius/lightncandy": "0.18.*"
