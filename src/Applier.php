@@ -87,9 +87,13 @@ class Applier
 		{
 			foreach ($this->_getFiles($dir) as $fileName)
 			{
-				// Notice
-				$niceDir = ltrim($dir, './\\');
-				$this->output->writeln(sprintf('%s%s', $niceDir, $fileName));
+				$modify = $this->_applyHeaders(sprintf('%s%s', $dir, $fileName), true);
+				if (true === $modify)
+				{
+					// Notice
+					$niceDir = ltrim($dir, './\\');
+					$this->output->writeln(sprintf('%s%s', $niceDir, $fileName));
+				}
 			}
 		}
 	}
@@ -124,14 +128,12 @@ class Applier
 				continue;
 			}
 
-//				$this->_applyHeaders(__DIR__ . '/ApplierTest.php');
-//				break;
 			$result[] = $file;
 		}
 		return $result;
 	}
 
-	private function _applyHeaders($file)
+	private function _applyHeaders($file, $checkOnly = false)
 	{
 		$this->processed++;
 		$source = file_get_contents($file);
@@ -164,7 +166,17 @@ class Applier
 		$n = StringHelper::detectNewline($source);
 		$lines = array_slice(explode($n, $source), $line - 1);
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
-
+		if ($checkOnly)
+		{
+			if ($new == $source)
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
 		if (is_writable($file))
 		{
 			if ($new == $source)
