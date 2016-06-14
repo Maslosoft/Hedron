@@ -13,7 +13,7 @@
 
 namespace Maslosoft\Hedron;
 
-use LightnCandy;
+use LightnCandy\LightnCandy;
 use Maslosoft\Hedron\Helpers\StringHelper;
 
 /**
@@ -32,14 +32,13 @@ class Renderer
 	{
 		$this->config = $config;
 		$str = LightnCandy::compile(file_get_contents($this->config['template']));
-		$this->path = $config['tmp'] . '/tpl';
-		file_put_contents($this->path, $str);
+		$this->path = sprintf('%s.php', tempnam($config['tmp'], 'tpl'));
+		file_put_contents($this->path, sprintf("<?php\n%s", $str));
+		$this->renderer = require_once $this->path;
 	}
 
 	public function render($params = [])
 	{
-		$renderer = require $this->path;
-
 		$extra = [
 			'year' => date('Y')
 		];
@@ -56,6 +55,7 @@ class Renderer
 			}
 		}
 		$data = array_merge($extra, $this->config, $params);
+		$renderer = $this->renderer;
 		$result = $renderer($data);
 		$this->_wrapWithStars($result);
 		return $result;
