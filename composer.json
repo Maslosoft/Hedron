@@ -25,6 +25,7 @@
 		"symfony/finder": "~3",
 		"phpunit/php-code-coverage": "~2",
 		"symfony/yaml": "~3",
-		"zordius/lightncandy": "0.18.*"
+		"zordius/lightncandy": "~0",
+		"maslosoft/cli-shared": "*"
 	}
 }
