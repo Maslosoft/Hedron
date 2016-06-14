@@ -70,6 +70,10 @@ class Configuration
 		}
 
 		$config['composer'] = $composer;
+		$parts = explode('/', $composer['name']);
+		
+		$config['shortName'] = array_pop($parts);
+		$config['vendorName'] = array_pop($parts);
 		return $config;
 	}
 
