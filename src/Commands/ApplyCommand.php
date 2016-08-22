@@ -13,12 +13,13 @@
 
 namespace Maslosoft\Hedron\Commands;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Hedron\Applier;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ApplyCommand extends Command
+class ApplyCommand extends Command implements AnnotatedInterface
 {
 
 	protected function configure()
@@ -47,4 +48,5 @@ EOT;
 	{
 		$signal->add($this, 'hedron');
 	}
+
 }

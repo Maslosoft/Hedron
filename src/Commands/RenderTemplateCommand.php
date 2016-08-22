@@ -13,6 +13,7 @@
 
 namespace Maslosoft\Hedron\Commands;
 
+use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Hedron\Configuration;
 use Maslosoft\Hedron\Renderer;
 use Symfony\Component\Console\Command\Command;
@@ -24,8 +25,9 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class RenderTemplateCommand extends Command
+class RenderTemplateCommand extends Command implements AnnotatedInterface
 {
+
 	protected function configure()
 	{
 		$this->setName("show");
@@ -55,4 +57,5 @@ EOT;
 	{
 		$signal->add($this, 'hedron');
 	}
+
 }
