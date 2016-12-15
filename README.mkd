@@ -13,7 +13,7 @@
 
 ### Quick Install
 ```bash
-composer require maslosoft/hedron:"*"
+composer require maslosoft/hedron
 ```
 
 <!--/header-->
