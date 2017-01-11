@@ -107,9 +107,8 @@ This script modifies source files en masse. For safety and robustness it uses na
 	
 ## Resources
 
- * [Project website](http://maslosoft.com/hedron/)
+ * [Project website](https://maslosoft.com/hedron/)
  * [Project Page on GitHub](https://github.com/Maslosoft/Hedron)
  * [Report a Bug](https://github.com/Maslosoft/Hedron/issues)
- * [PHP Addendum library](http://code.google.com/p/addendum/)
 
 
