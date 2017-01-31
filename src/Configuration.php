@@ -7,8 +7,7 @@
  * @license AGPL, Commercial
  *
  * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
- *
- * @link http://maslosoft.com/hedron/
+ * @link https://maslosoft.com/hedron/
  */
 
 namespace Maslosoft\Hedron;
