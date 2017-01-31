@@ -5,7 +5,7 @@
 		"AGPL",
 		"Commercial"
 	],
-	"homepage": "http://maslosoft.com/hedron/",
+	"homepage": "https://maslosoft.com/hedron/",
 	"authors": [
 		{
 			"name": "Peter Maselkowski",
@@ -27,5 +27,8 @@
 		"symfony/yaml": "~3",
 		"zordius/lightncandy": "~0",
 		"maslosoft/cli-shared": "*"
+	},
+	"require-dev": {
+		"maslosoft/addendum": "*"
 	}
 }
