@@ -26,9 +26,7 @@
 		"phpunit/php-code-coverage": "~2",
 		"symfony/yaml": "~3",
 		"zordius/lightncandy": "~0",
-		"maslosoft/cli-shared": "*"
-	},
-	"require-dev": {
+		"maslosoft/cli-shared": "*",
 		"maslosoft/addendum": "*"
 	}
 }

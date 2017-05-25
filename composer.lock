@@ -4,24 +4,125 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f9fe57a404be251d4760e82c348988ad",
-    "content-hash": "44a2d523937d605dbe4f14e4a949ec5e",
+    "content-hash": "de625652c9818635b7b9f1900732446f",
     "packages": [
         {
-            "name": "maslosoft/cli-shared",
-            "version": "0.0.10",
+            "name": "maslosoft/addendum",
+            "version": "5.0.9",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Maslosoft/CLIShared.git",
-                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea"
+                "url": "https://github.com/Maslosoft/Addendum.git",
+                "reference": "742751f01c9c531e43395b0894c5a76c3640d670"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
-                "reference": "77f1e3ba83fc7cc6cdce8d9453739a78f5e3c6ea",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/742751f01c9c531e43395b0894c5a76c3640d670",
+                "reference": "742751f01c9c531e43395b0894c5a76c3640d670",
                 "shasum": ""
             },
             "require": {
+                "maslosoft/cache": "*",
+                "maslosoft/cli-shared": "*",
+                "maslosoft/embedi": "*",
+                "maslosoft/gazebo": "*",
+                "maslosoft/signals": "*",
+                "php": ">=5.5.0",
+                "psr/log": "~1"
+            },
+            "require-dev": {
+                "maslosoft/addendumtest": "dev-master",
+                "maslosoft/hedron": "*"
+            },
+            "suggest": {
+                "monolog/monolog": "Sends your logs to files, sockets, inboxes, databases and various web services"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Addendum\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy to use php annotations",
+            "homepage": "https://maslosoft.com/addendum/",
+            "keywords": [
+                "addendum",
+                "annotation",
+                "annotations",
+                "metadata"
+            ],
+            "time": "2017-04-18T21:05:45+00:00"
+        },
+        {
+            "name": "maslosoft/cache",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Cache.git",
+                "reference": "ada699d175eb79ae9d0698966c8dd11009eae695"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Cache/zipball/ada699d175eb79ae9d0698966c8dd11009eae695",
+                "reference": "ada699d175eb79ae9d0698966c8dd11009eae695",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/embedi": "*"
+            },
+            "require-dev": {
+                "maslosoft/cachetest": "dev-master",
+                "maslosoft/hedron": "^1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com"
+                }
+            ],
+            "description": "Easy to use, auto configurable, extensible cache provider",
+            "homepage": "https://maslosoft.com/cache/",
+            "time": "2017-03-09T15:07:48+00:00"
+        },
+        {
+            "name": "maslosoft/cli-shared",
+            "version": "0.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/CLIShared.git",
+                "reference": "cc70ac32193c3565162243b2c24dd8f707564c59"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/cc70ac32193c3565162243b2c24dd8f707564c59",
+                "reference": "cc70ac32193c3565162243b2c24dd8f707564c59",
+                "shasum": ""
+            },
+            "require": {
+                "psr/log": "^1",
                 "symfony/finder": "~3",
                 "symfony/yaml": "~3"
             },
@@ -46,7 +147,152 @@
                 }
             ],
             "description": "Shared CLI application components",
-            "time": "2016-08-18 20:04:06"
+            "time": "2017-02-02T11:08:18+00:00"
+        },
+        {
+            "name": "maslosoft/embedi",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/EmbeDi.git",
+                "reference": "093bf25421887f4e33280cea2a14cc8fc9dc85fb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/093bf25421887f4e33280cea2a14cc8fc9dc85fb",
+                "reference": "093bf25421887f4e33280cea2a14cc8fc9dc85fb",
+                "shasum": ""
+            },
+            "require-dev": {
+                "maslosoft/embeditest": "dev-master",
+                "maslosoft/hedron": "~1",
+                "maslosoft/zamm": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\EmbeDi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Embedded DI container",
+            "homepage": "https://maslosoft.com/embedi/",
+            "time": "2017-05-11T11:25:33+00:00"
+        },
+        {
+            "name": "maslosoft/gazebo",
+            "version": "1.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Gazebo.git",
+                "reference": "52fac115f308d5f6598b0a51514c86d5e2cb249c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Gazebo/zipball/52fac115f308d5f6598b0a51514c86d5e2cb249c",
+                "reference": "52fac115f308d5f6598b0a51514c86d5e2cb249c",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/addendum": "*",
+                "maslosoft/embedi": "*"
+            },
+            "require-dev": {
+                "maslosoft/gazebotest": "dev-master",
+                "maslosoft/hedron": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Gazebo\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com"
+                }
+            ],
+            "description": "Plugin container",
+            "homepage": "https://maslosoft.com/gazebo/",
+            "time": "2017-04-06T21:08:56+00:00"
+        },
+        {
+            "name": "maslosoft/signals",
+            "version": "2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Signals.git",
+                "reference": "56c0fa5a0ac43e99b3bd44e2392292f1aedde669"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/56c0fa5a0ac43e99b3bd44e2392292f1aedde669",
+                "reference": "56c0fa5a0ac43e99b3bd44e2392292f1aedde669",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/addendum": "*",
+                "maslosoft/cli-shared": "*",
+                "maslosoft/embedi": "*",
+                "psr/log": "~1",
+                "symfony/console": "^3"
+            },
+            "require-dev": {
+                "codeception/codeception": "*",
+                "maslosoft/hedron": "*",
+                "maslosoft/signalstest": "dev-master"
+            },
+            "bin": [
+                "signals"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Signals\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Wireless Cross-Component Communication",
+            "homepage": "https://maslosoft.com/signals/",
+            "keywords": [
+                "event",
+                "events",
+                "signal",
+                "signals",
+                "slot",
+                "slots"
+            ],
+            "time": "2017-04-11T14:26:11+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -108,7 +354,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-06 15:47:00"
+            "time": "2015-10-06T15:47:00+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -155,7 +401,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2016-10-03 07:40:28"
+            "time": "2016-10-03T07:40:28+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -196,20 +442,20 @@
             "keywords": [
                 "template"
             ],
-            "time": "2015-06-21 13:50:34"
+            "time": "2015-06-21T13:50:34+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.9",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
-                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/e03f8f67534427a787e21a385a67ec3ca6978ea7",
+                "reference": "e03f8f67534427a787e21a385a67ec3ca6978ea7",
                 "shasum": ""
             },
             "require": {
@@ -245,7 +491,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2016-11-15 14:06:22"
+            "time": "2017-02-27T10:12:30+00:00"
         },
         {
             "name": "psr/log",
@@ -292,7 +538,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -342,7 +588,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-08-18 05:49:44"
+            "time": "2016-08-18T05:49:44+00:00"
         },
         {
             "name": "sebastian/version",
@@ -377,20 +623,20 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2015-06-21 13:59:46"
+            "time": "2015-06-21T13:59:46+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.2",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd"
+                "reference": "a7a17e0c6c3c4d70a211f80782e4b90ddadeaa38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/4f9e449e76996adf310498a8ca955c6deebe29dd",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
+                "url": "https://api.github.com/repos/symfony/console/zipball/a7a17e0c6c3c4d70a211f80782e4b90ddadeaa38",
+                "reference": "a7a17e0c6c3c4d70a211f80782e4b90ddadeaa38",
                 "shasum": ""
             },
             "require": {
@@ -440,20 +686,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-08 20:47:33"
+            "time": "2017-04-26T01:39:17+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.2",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05"
+                "reference": "fd6eeee656a5a7b384d56f1072243fe1c0e81686"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/810ba5c1c5352a4ddb15d4719e8936751dff0b05",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/fd6eeee656a5a7b384d56f1072243fe1c0e81686",
+                "reference": "fd6eeee656a5a7b384d56f1072243fe1c0e81686",
                 "shasum": ""
             },
             "require": {
@@ -497,20 +743,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-04-19T20:17:50+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.2.2",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6"
+                "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/8c71141cae8e2957946b403cc71a67213c0380d6",
-                "reference": "8c71141cae8e2957946b403cc71a67213c0380d6",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
+                "reference": "9cf076f8f492f4b1ffac40aae9c2d287b4ca6930",
                 "shasum": ""
             },
             "require": {
@@ -546,7 +792,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-04-12T14:13:17+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -605,20 +851,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.2.2",
+            "version": "v3.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d"
+                "reference": "acec26fcf7f3031e094e910b94b002fa53d4e4d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/50eadbd7926e31842893c957eca362b21592a97d",
-                "reference": "50eadbd7926e31842893c957eca362b21592a97d",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/acec26fcf7f3031e094e910b94b002fa53d4e4d6",
+                "reference": "acec26fcf7f3031e094e910b94b002fa53d4e4d6",
                 "shasum": ""
             },
             "require": {
@@ -660,7 +906,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-03 13:51:32"
+            "time": "2017-05-01T14:55:58+00:00"
         },
         {
             "name": "zordius/lightncandy",
@@ -712,252 +958,10 @@
                 "php",
                 "template"
             ],
-            "time": "2016-08-23 07:07:34"
+            "time": "2016-08-23T07:07:34+00:00"
         }
     ],
-    "packages-dev": [
-        {
-            "name": "maslosoft/addendum",
-            "version": "5.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "4835029d6b62aef0296c5d3b4e44c9181e706397"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/4835029d6b62aef0296c5d3b4e44c9181e706397",
-                "reference": "4835029d6b62aef0296c5d3b4e44c9181e706397",
-                "shasum": ""
-            },
-            "require": {
-                "maslosoft/cache": "*",
-                "maslosoft/cli-shared": "*",
-                "maslosoft/embedi": "*",
-                "maslosoft/gazebo": "*",
-                "maslosoft/signals": "*",
-                "php": ">=5.5.0",
-                "psr/log": "~1"
-            },
-            "require-dev": {
-                "maslosoft/addendumtest": "dev-master",
-                "maslosoft/hedron": "*"
-            },
-            "suggest": {
-                "monolog/monolog": "Sends your logs to files, sockets, inboxes, databases and various web services"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\Addendum\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL",
-                "Commercial"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com",
-                    "homepage": "http://maslosoft.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Easy to use php annotations",
-            "homepage": "https://maslosoft.com/addendum/",
-            "keywords": [
-                "addendum",
-                "annotation",
-                "annotations",
-                "metadata"
-            ],
-            "time": "2017-01-24 16:24:25"
-        },
-        {
-            "name": "maslosoft/cache",
-            "version": "1.0.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/Cache.git",
-                "reference": "1de92324ebb409e86845952bb993fcf24940cc32"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Cache/zipball/1de92324ebb409e86845952bb993fcf24940cc32",
-                "reference": "1de92324ebb409e86845952bb993fcf24940cc32",
-                "shasum": ""
-            },
-            "require": {
-                "maslosoft/embedi": "*"
-            },
-            "require-dev": {
-                "maslosoft/cachetest": "dev-master",
-                "maslosoft/hedron": "~1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\Cache\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL",
-                "Commercial"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com"
-                }
-            ],
-            "description": "Easy to use, auto configurable, extensible cache provider",
-            "time": "2016-08-11 10:22:00"
-        },
-        {
-            "name": "maslosoft/embedi",
-            "version": "1.0.17",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/EmbeDi.git",
-                "reference": "51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b",
-                "reference": "51c476876bd1cad2e4c0fd11c7d6bb9a216ceb5b",
-                "shasum": ""
-            },
-            "require-dev": {
-                "maslosoft/embeditest": "dev-master",
-                "maslosoft/hedron": "~1",
-                "maslosoft/zamm": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\EmbeDi\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL",
-                "Commercial"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com",
-                    "homepage": "http://maslosoft.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Embedded DI container",
-            "time": "2016-08-10 18:09:56"
-        },
-        {
-            "name": "maslosoft/gazebo",
-            "version": "1.1.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/Gazebo.git",
-                "reference": "036cc0b517410073d9aca07d0196d18aa2add7c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Gazebo/zipball/036cc0b517410073d9aca07d0196d18aa2add7c0",
-                "reference": "036cc0b517410073d9aca07d0196d18aa2add7c0",
-                "shasum": ""
-            },
-            "require": {
-                "maslosoft/addendum": "*",
-                "maslosoft/embedi": "*"
-            },
-            "require-dev": {
-                "maslosoft/gazebotest": "dev-master",
-                "maslosoft/hedron": "*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\Gazebo\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL",
-                "Commercial"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com"
-                }
-            ],
-            "description": "Plugin container",
-            "time": "2016-08-10 18:09:44"
-        },
-        {
-            "name": "maslosoft/signals",
-            "version": "2.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "e560bcc1bc4743c3847d0f53f0444093ac039701"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/e560bcc1bc4743c3847d0f53f0444093ac039701",
-                "reference": "e560bcc1bc4743c3847d0f53f0444093ac039701",
-                "shasum": ""
-            },
-            "require": {
-                "maslosoft/addendum": "*",
-                "maslosoft/cli-shared": "*",
-                "maslosoft/embedi": "*",
-                "psr/log": "~1"
-            },
-            "require-dev": {
-                "maslosoft/hedron": "*",
-                "maslosoft/signalstest": "dev-master"
-            },
-            "bin": [
-                "signals"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\Signals\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL",
-                "Commercial"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com",
-                    "homepage": "http://maslosoft.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Wireless Cross-Component Communication",
-            "homepage": "https://maslosoft.com/signals/",
-            "keywords": [
-                "event",
-                "events",
-                "signal",
-                "signals",
-                "slot",
-                "slots"
-            ],
-            "time": "2017-01-31 11:52:10"
-        }
-    ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
