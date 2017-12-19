@@ -5,4 +5,5 @@ filter:
     blacklist:
         include:
             # Exclude code moved from old phpunit's code coverage package
-            - src/Helpers/Filter/*
+            - Helpers/Filter/*
+            - Some/Bogus/Path/*

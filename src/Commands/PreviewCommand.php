@@ -45,7 +45,11 @@ EOT;
 	{
 		$output->writeln("Following files will be processed:");
 		$applier = new Applier($output);
-		$applier->listFiles();
+		$modified = $applier->listFiles();
+		if($modified === 0)
+		{
+			$output->writeln("No files will be modified.");
+		}
 	}
 
 	/**

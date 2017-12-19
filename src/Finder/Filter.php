@@ -12,9 +12,13 @@
 
 namespace Maslosoft\Hedron\Finder;
 
+use Exception;
+use InvalidArgumentException;
 use Maslosoft\Hedron\Helpers\Filter\FileFilter;
 use PHP_CodeCoverage;
 use PHP_CodeCoverage_Filter;
+use Symfony\Component\Console\Output\NullOutput;
+use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -25,27 +29,33 @@ class Filter
 
 	/**
 	 * Filter instance
-	 * @var PHP_CodeCoverage_Filter	 
+	 * @var FileFilter
 	 */
 	private $filter = null;
 
 	private $workingDir = null;
 
 	/**
-	 * Configuration array
-	 * @var string[][][]
+	 * @var OutputInterface
 	 */
-//	private $config = [];
+	private $output = null;
 
 	/**
 	 * Filter
 	 *
 	 * @author Piotr Maselkowski <pmaselkowski at gmail.com>
 	 */
-	function __construct($workingDir, $config = [])
+	function __construct($workingDir, $config = [], OutputInterface $output = null)
 	{
 		$this->workingDir = $workingDir;
 		$this->filter = new FileFilter;
+
+		if (empty($output))
+		{
+			$output = new NullOutput;
+		}
+		$this->output = $output;
+
 		$this->whiteList($config)->blackList($config);
 	}
 
@@ -77,10 +87,16 @@ class Filter
 		{
 			foreach ($config['whitelist']['include'] as $fileOrDir)
 			{
-				$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
-				foreach ($finder as $file)
+				try
 				{
-					$filter->addFileToWhitelist($file);
+					$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
+					foreach ($finder as $file)
+					{
+						$filter->addFileToWhitelist($file);
+					}
+				} catch (InvalidArgumentException $e)
+				{
+					$this->handle($e);
 				}
 			}
 		}
@@ -88,10 +104,16 @@ class Filter
 		{
 			foreach ($config['whitelist']['exclude'] as $fileOrDir)
 			{
-				$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
-				foreach ($finder as $file)
+				try
 				{
-					$filter->removeFileFromWhitelist($file);
+					$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
+					foreach ($finder as $file)
+					{
+						$filter->removeFileFromWhitelist($file);
+					}
+				} catch (InvalidArgumentException $e)
+				{
+					$this->handle($e);
 				}
 			}
 		}
@@ -111,10 +133,16 @@ class Filter
 			{
 				foreach ($config['blacklist']['include'] as $fileOrDir)
 				{
-					$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
-					foreach ($finder as $file)
+					try
 					{
-						$filter->addFileToBlacklist($file);
+						$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
+						foreach ($finder as $file)
+						{
+							$filter->addFileToBlacklist($file);
+						}
+					} catch (InvalidArgumentException $e)
+					{
+						$this->handle($e);
 					}
 				}
 			}
@@ -122,10 +150,16 @@ class Filter
 			{
 				foreach ($config['blacklist']['exclude'] as $fileOrDir)
 				{
-					$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
-					foreach ($finder as $file)
+					try
 					{
-						$filter->removeFileFromBlacklist($file);
+						$finder = strpos($fileOrDir, '*') === false ? array($fileOrDir) : $this->matchWildcardPattern($fileOrDir);
+						foreach ($finder as $file)
+						{
+							$filter->removeFileFromBlacklist($file);
+						}
+					} catch (InvalidArgumentException $e)
+					{
+						$this->handle($e);
 					}
 				}
 			}
@@ -133,6 +167,11 @@ class Filter
 		return $this;
 	}
 
+	/**
+	 * @param $pattern
+	 * @throws InvalidArgumentException
+	 * @return Finder
+	 */
 	protected function matchWildcardPattern($pattern)
 	{
 		$finder = Finder::create();
@@ -157,11 +196,20 @@ class Filter
 	}
 
 	/**
-	 * @return PHP_CodeCoverage_Filter
+	 * @return FileFilter
 	 */
 	public function getFilter()
 	{
 		return $this->filter;
+	}
+
+	/**
+	 * Handle exception
+	 * @param $e
+	 */
+	private function handle(Exception $e)
+	{
+		$this->output->writeln(sprintf('<error>%s</error> <info>This will be skipped, rest operations should succeed.</info>', $e->getMessage()));
 	}
 
 }

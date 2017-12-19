@@ -4,6 +4,7 @@ sources: ""
 # Path to template file, if blank will use vendor/maslosoft/hedron/templates/default.html (no it's not html)
 template: ""
 # Filter configuration, by default empty. Below is some example filter.
+# Note that this folders are relative to sources paths
 filter:
     whitelist:
         include:

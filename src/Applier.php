@@ -60,9 +60,9 @@ class Applier
 
 		foreach ($this->config['sources'] as $dir)
 		{
-			foreach ($this->_getFiles($dir) as $fileName)
+			foreach ($this->getFiles($dir) as $fileName)
 			{
-				$this->_applyHeaders(sprintf('%s%s', $dir, $fileName));
+				$this->applyHeaders(sprintf('%s%s', $dir, $fileName));
 			}
 		}
 
@@ -80,33 +80,38 @@ class Applier
 		}
 	}
 
+	/**
+	 * @return int
+	 */
 	public function listFiles()
 	{
+		$num = 0;
 		foreach ($this->config['sources'] as $dir)
 		{
-			foreach ($this->_getFiles($dir) as $fileName)
+			foreach ($this->getFiles($dir) as $fileName)
 			{
-				$modify = $this->_applyHeaders(sprintf('%s%s', $dir, $fileName), true);
+				$modify = $this->applyHeaders(sprintf('%s%s', $dir, $fileName), true);
 				if (true === $modify)
 				{
 					// Notice
 					$niceDir = ltrim($dir, './\\');
 					$this->output->writeln(sprintf('%s%s', $niceDir, $fileName));
+					$num++;
 				}
 			}
 		}
+		return $num;
 	}
 
 	/**
-	 * TODO Implement filters, see Codeception/Coverage/Filter.php
-	 * @param type $dir
-	 * @return type
+	 * @param string $dir
+	 * @return string[]
 	 */
-	private function _getFiles($dir)
+	private function getFiles($dir)
 	{
 		$finder = new Finder();
 
-		$this->filter = new Filter($finder, $dir, $this->config['filter']);
+		$this->filter = new Filter($dir, $this->config['filter'], $this->output);
 
 		$result = [];
 
@@ -132,7 +137,7 @@ class Applier
 		return $result;
 	}
 
-	private function _applyHeaders($file, $checkOnly = false)
+	private function applyHeaders($file, $checkOnly = false)
 	{
 		$this->processed++;
 		$source = file_get_contents($file);
@@ -154,13 +159,17 @@ class Applier
 				break;
 			}
 		}
-		if (!$line)
+
+		// Seems not PHP, or empty file
+		if (empty($line))
 		{
-			return;
+			return false;
 		}
-		if (!$ns)
+
+		// Empty namespace, skip
+		if (empty($ns))
 		{
-			return;
+			return false;
 		}
 		$n = StringHelper::detectNewline($source);
 		$lines = array_slice(explode($n, $source), $line - 1);
@@ -195,12 +204,14 @@ class Applier
 					if ($this->output->isVerbose())
 					{
 						$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
+						return false;
 					}
 				}
 				else
 				{
 					$this->output->writeln(sprintf('<info>Written</info> %s', $niceFile));
 					$this->success[] = true;
+					return true;
 				}
 			}
 			else
@@ -208,13 +219,14 @@ class Applier
 				// Fail
 				$this->output->writeln(sprintf('Failed %s', $niceFile));
 				$this->success[] = false;
+				return false;
 			}
 		}
 		else
 		{
-
 			$this->success[] = false;
 		}
+		return false;
 	}
 
 }
