@@ -14,7 +14,8 @@ namespace Maslosoft\Hedron\Commands;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Hedron\Applier;
-use Symfony\Component\Console\Command\Command;
+use Maslosoft\Sitcom\Command;
+use Symfony\Component\Console\Command\Command as ConsoleCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -23,7 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  *
  * @author Piotr Maselkowski <pmaselkowski at gmail.com>
  */
-class PreviewCommand extends Command implements AnnotatedInterface
+class PreviewCommand extends ConsoleCommand implements AnnotatedInterface
 {
 
 	protected function configure()
@@ -48,10 +49,10 @@ EOT;
 	}
 
 	/**
-	 * @SlotFor(Maslosoft\Sitcom\Command)
-	 * @param Maslosoft\Signals\Command $signal
+	 * @SlotFor(Command)
+	 * @param Command $signal
 	 */
-	public function reactOn(\Maslosoft\Sitcom\Command $signal)
+	public function reactOn(Command $signal)
 	{
 		$signal->add($this, 'hedron');
 	}
