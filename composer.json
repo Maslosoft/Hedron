@@ -24,7 +24,7 @@
 		"symfony/console": ">=2.7 <5.0",
 		"symfony/finder": ">=2.7 <5.0",
 		"symfony/yaml": ">=2.7 <5.0",
-		"zordius/lightncandy": "^0",
+		"zordius/lightncandy": "^1",
 		"maslosoft/cli-shared": "*",
 		"maslosoft/addendum": "*"
 	}
