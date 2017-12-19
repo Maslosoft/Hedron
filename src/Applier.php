@@ -106,7 +106,7 @@ class Applier
 	{
 		$finder = new Finder();
 
-		$this->filter = new Filter($dir, $this->config['filter']);
+		$this->filter = new Filter($finder, $dir, $this->config['filter']);
 
 		$result = [];
 

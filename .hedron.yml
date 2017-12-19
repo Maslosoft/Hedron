@@ -1,2 +1,8 @@
 sources: "src"
 template: ""
+# Filter configuration, by default empty. Below is some example filter.
+filter:
+    blacklist:
+        include:
+            # Exclude code moved from old phpunit's code coverage package
+            - src/Helpers/Filter/*

@@ -12,6 +12,7 @@
 
 namespace Maslosoft\Hedron\Finder;
 
+use Maslosoft\Hedron\Helpers\Filter\FileFilter;
 use PHP_CodeCoverage;
 use PHP_CodeCoverage_Filter;
 use Symfony\Component\Finder\Finder;
@@ -44,7 +45,7 @@ class Filter
 	function __construct($workingDir, $config = [])
 	{
 		$this->workingDir = $workingDir;
-		$this->filter = new PHP_CodeCoverage_Filter();
+		$this->filter = new FileFilter;
 		$this->whiteList($config)->blackList($config);
 	}
 

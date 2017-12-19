@@ -21,11 +21,10 @@
 		}
 	},
 	"require": {
-		"symfony/console": "~3",
-		"symfony/finder": "~3",
-		"phpunit/php-code-coverage": "~2",
-		"symfony/yaml": "~3",
-		"zordius/lightncandy": "~0",
+		"symfony/console": ">=2.7 <5.0",
+		"symfony/finder": ">=2.7 <5.0",
+		"symfony/yaml": ">=2.7 <5.0",
+		"zordius/lightncandy": "^0",
 		"maslosoft/cli-shared": "*",
 		"maslosoft/addendum": "*"
 	}
