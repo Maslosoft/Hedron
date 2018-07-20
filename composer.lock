@@ -245,16 +245,16 @@
         },
         {
             "name": "maslosoft/signals",
-            "version": "2.0.19",
+            "version": "2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "ce4a722003313857c52001fa9b9b38faf792585b"
+                "reference": "78b2a428e455ec7590c76419f359892f738e1350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/ce4a722003313857c52001fa9b9b38faf792585b",
-                "reference": "ce4a722003313857c52001fa9b9b38faf792585b",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/78b2a428e455ec7590c76419f359892f738e1350",
+                "reference": "78b2a428e455ec7590c76419f359892f738e1350",
                 "shasum": ""
             },
             "require": {
@@ -304,7 +304,7 @@
                 "slot",
                 "slots"
             ],
-            "time": "2018-03-29T14:40:19+00:00"
+            "time": "2018-07-17T20:02:23+00:00"
         },
         {
             "name": "psr/log",
