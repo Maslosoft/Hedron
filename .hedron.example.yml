@@ -1,4 +1,4 @@
-# All paths are realtive to your project root
+# All paths are relative to your project root
 # Root path or paths with sources. If blank will use composer.autoload paths.
 sources: ""
 # Path to template file, if blank will use vendor/maslosoft/hedron/templates/default.html (no it's not html)
