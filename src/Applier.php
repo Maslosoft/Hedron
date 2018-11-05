@@ -172,6 +172,10 @@ class Applier
 			return false;
 		}
 		$n = StringHelper::detectNewline($source);
+		if(StringHelper::isGenerated($source, $line, $n))
+		{
+			return false;
+		}
 		$lines = array_slice(explode($n, $source), $line - 1);
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
 		if ($checkOnly)

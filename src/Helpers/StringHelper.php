@@ -12,6 +12,9 @@
 
 namespace Maslosoft\Hedron\Helpers;
 
+use function implode;
+use function strpos;
+
 /**
  * StringHelper
  *
@@ -24,6 +27,13 @@ class StringHelper
 	{
 		$newlines = preg_replace('/.*/', '', $text);
 		return substr($newlines, 0, 1);
+	}
+
+	public static function isGenerated($source, $line, $separator)
+	{
+		$lines = array_slice(explode($separator, $source), 0, $line - 1);
+		$header = implode($separator, $lines);
+		return strpos($header, '@generated') !== false;
 	}
 
 }
