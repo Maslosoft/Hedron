@@ -68,6 +68,11 @@ class Configuration
 			$config['tmp'] = sprintf('%s/tmp/', realpath(__DIR__ . '/..'));
 		}
 
+		if(empty($composer['name']))
+		{
+			$composer['name'] = 'empty/name';
+		}
+
 		$config['composer'] = $composer;
 		$parts = explode('/', $composer['name']);
 		
