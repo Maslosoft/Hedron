@@ -14,8 +14,9 @@ namespace Maslosoft\Hedron;
 
 use Maslosoft\Hedron\Finder\Filter;
 use Maslosoft\Hedron\Helpers\StringHelper;
-use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Console\Output\OutputInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
+use function rtrim;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
@@ -26,12 +27,12 @@ class Applier
 
 	/**
 	 * Output
-	 * @var OutputInterface
+	 * @var LoggerInterface
 	 */
 	private $output = null;
 
 	/**
-	 * Fitler
+	 * Filter
 	 * @var Filter
 	 */
 	private $filter = null;
@@ -44,13 +45,13 @@ class Applier
 	private $success = [];
 	private $processed = 0;
 
-	public function __construct(OutputInterface $output = null)
+	public function __construct(LoggerInterface $logger = null)
 	{
-		if (null === $output)
+		if (null === $logger)
 		{
-			$output = new NullOutput();
+			$logger = new NullLogger();
 		}
-		$this->output = $output;
+		$this->output = $logger;
 		$this->config = (new Configuration())->load();
 		$this->renderer = new Renderer($this->config);
 	}
@@ -67,16 +68,16 @@ class Applier
 		}
 
 		// Notice
-		$this->output->writeln(sprintf('Processed <comment>%d</comment> files', $this->processed));
+		$this->output->info(sprintf('Processed <comment>%d</comment> files', $this->processed));
 		if (count($this->success) == array_sum($this->success))
 		{
 			// Success
-			$this->output->writeln(sprintf('Modified <info>%d</info> files', array_sum($this->success)));
+			$this->output->info(sprintf('Modified <info>%d</info> files', array_sum($this->success)));
 		}
 		else
 		{
 			// Error
-			$this->output->writeln(sprintf('Failed to modify %d files', count($this->success) - array_sum($this->success)));
+			$this->output->error(sprintf('Failed to modify %d files', count($this->success) - array_sum($this->success)));
 		}
 	}
 
@@ -95,7 +96,9 @@ class Applier
 				{
 					// Notice
 					$niceDir = ltrim($dir, './\\');
-					$this->output->writeln(sprintf('%s%s', $niceDir, $fileName));
+					// Use alert log level to always show
+					// but hide it as error with info tag
+					$this->output->alert(sprintf('<info>%s%s</info>', $niceDir, $fileName));
 					$num++;
 				}
 			}
@@ -109,6 +112,11 @@ class Applier
 	 */
 	private function getFiles($dir)
 	{
+		$info = new \SplFileInfo($dir);
+		if($info->isFile())
+		{
+			return [''];
+		}
 		$finder = new Finder();
 
 		$this->filter = new Filter($dir, $this->config['filter'], $this->output);
@@ -140,6 +148,7 @@ class Applier
 	private function applyHeaders($file, $checkOnly = false)
 	{
 		$this->processed++;
+		$file = rtrim($file, '/\\');
 		$source = file_get_contents($file);
 		$tokens = token_get_all($source);
 		$ns = '';
@@ -151,7 +160,8 @@ class Applier
 				continue;
 			}
 			$type = array_shift($token);
-			$value = array_shift($token);
+			// Token value - which is not used in this case
+			array_shift($token);
 			$line = array_shift($token);
 			if ($type == T_NAMESPACE)
 			{
@@ -169,11 +179,13 @@ class Applier
 		// Empty namespace, skip
 		if (empty($ns))
 		{
+			$this->output->debug("No namespace in <info>$file</info>, skipping...");
 			return false;
 		}
 		$n = StringHelper::detectNewline($source);
 		if(StringHelper::isGenerated($source, $line, $n))
 		{
+			$this->output->debug("Generated file: <info>$file</info>, skipping...");
 			return false;
 		}
 		$lines = array_slice(explode($n, $source), $line - 1);
@@ -205,15 +217,12 @@ class Applier
 				// Success
 				if ($new == $source)
 				{
-					if ($this->output->isVerbose())
-					{
-						$this->output->writeln(sprintf('<comment>Skipped</comment> %s', $niceFile));
-						return false;
-					}
+					$this->output->debug(sprintf('<comment>Skipped</comment> %s', $niceFile));
+					return false;
 				}
 				else
 				{
-					$this->output->writeln(sprintf('<info>Written</info> %s', $niceFile));
+					$this->output->info(sprintf('<info>Written</info> %s', $niceFile));
 					$this->success[] = true;
 					return true;
 				}
@@ -221,7 +230,7 @@ class Applier
 			else
 			{
 				// Fail
-				$this->output->writeln(sprintf('Failed %s', $niceFile));
+				$this->output->error(sprintf('Failed %s', $niceFile));
 				$this->success[] = false;
 				return false;
 			}

@@ -13,6 +13,7 @@
 namespace Maslosoft\Hedron\Commands;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
+use Maslosoft\Cli\Shared\Log\Logger;
 use Maslosoft\Hedron\Applier;
 use Maslosoft\Sitcom\Command;
 use Symfony\Component\Console\Command\Command as ConsoleCommand;
@@ -44,11 +45,17 @@ EOT;
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$output->writeln("Following files will be processed:");
-		$applier = new Applier($output);
+		$logger = new Logger($output);
+		$applier = new Applier($logger);
 		$modified = $applier->listFiles();
 		if($modified === 0)
 		{
 			$output->writeln("No files will be modified.");
+		}
+		else
+		{
+			// Use output writeln to always show message
+			$output->writeln("Total of <info>$modified</info> files will be updated");
 		}
 	}
 

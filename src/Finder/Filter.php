@@ -15,10 +15,8 @@ namespace Maslosoft\Hedron\Finder;
 use Exception;
 use InvalidArgumentException;
 use Maslosoft\Hedron\Helpers\Filter\FileFilter;
-use PHP_CodeCoverage;
-use PHP_CodeCoverage_Filter;
-use Symfony\Component\Console\Output\NullOutput;
-use Symfony\Component\Console\Output\OutputInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Symfony\Component\Finder\Finder;
 
 /**
@@ -36,7 +34,7 @@ class Filter
 	private $workingDir = null;
 
 	/**
-	 * @var OutputInterface
+	 * @var LoggerInterface
 	 */
 	private $output = null;
 
@@ -44,15 +42,18 @@ class Filter
 	 * Filter
 	 *
 	 * @author Piotr Maselkowski <pmaselkowski at gmail.com>
+	 * @param                      $workingDir
+	 * @param array                $config
+	 * @param LoggerInterface|null $output
 	 */
-	function __construct($workingDir, $config = [], OutputInterface $output = null)
+	function __construct($workingDir, $config = [], LoggerInterface $output = null)
 	{
 		$this->workingDir = $workingDir;
 		$this->filter = new FileFilter;
 
 		if (empty($output))
 		{
-			$output = new NullOutput;
+			$output = new NullLogger;
 		}
 		$this->output = $output;
 
@@ -209,7 +210,7 @@ class Filter
 	 */
 	private function handle(Exception $e)
 	{
-		$this->output->writeln(sprintf('<error>%s</error> <info>This will be skipped, rest operations should succeed.</info>', $e->getMessage()));
+		$this->output->error(sprintf('<error>%s</error> <info>This will be skipped, rest operations should succeed.</info>', $e->getMessage()));
 	}
 
 }

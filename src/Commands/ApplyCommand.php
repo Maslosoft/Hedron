@@ -13,6 +13,7 @@
 namespace Maslosoft\Hedron\Commands;
 
 use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
+use Maslosoft\Cli\Shared\Log\Logger;
 use Maslosoft\Hedron\Applier;
 use Maslosoft\Sitcom\Command;
 use Symfony\Component\Console\Command\Command as ConsoleComand;
@@ -37,7 +38,8 @@ EOT;
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-		(new Applier($output))->apply();
+		$logger = new Logger($output);
+		(new Applier($logger))->apply();
 	}
 
 	/**
