@@ -26,6 +26,7 @@
     "symfony/yaml": ">=2.7 <5.0",
     "zordius/lightncandy": "^1",
     "maslosoft/cli-shared": "*",
-    "maslosoft/addendum": "*"
+    "maslosoft/addendum": "*",
+    "ext-json": "*"
   }
 }
