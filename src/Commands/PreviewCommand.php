@@ -30,7 +30,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class PreviewCommand extends ConsoleCommand implements AnnotatedInterface
 {
 
-	protected function configure()
+	protected function configure(): void
 	{
 		$this->setName("preview");
 		$this->setDescription("Show list of files to which headers will be applied");
@@ -44,7 +44,7 @@ EOT;
 		$this->setHelp($help);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		$output->writeln("Following files will be processed:");
 		$logger = new Logger($output);
@@ -65,7 +65,7 @@ EOT;
 	 * @SlotFor(Command)
 	 * @param Command $signal
 	 */
-	public function reactOn(Command $signal)
+	public function reactOn(Command $signal): void
 	{
 		$signal->add($this, 'hedron');
 	}
