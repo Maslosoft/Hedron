@@ -26,7 +26,7 @@ class Configuration
 	 *
 	 * @var string
 	 */
-	private $dir = '';
+	private string $dir;
 
 	public function __construct($dir = null)
 	{
@@ -37,15 +37,12 @@ class Configuration
 	{
 		$config = $this->_loadConfigFile();
 		$composer = $this->_loadComposerFile();
-		$config['filter'] = isset($config['filter']) ? $config['filter'] : [];
+		$config['filter'] = $config['filter'] ?? [];
 
 		// Sources setup
-		if (!isset($config['sources']))
+		if (!isset($config['sources']) && isset($composer['autoload']))
 		{
-			if (isset($composer['autoload']))
-			{
-				$config['sources'] = $this->_extractAutoload($composer['autoload']);
-			}
+			$config['sources'] = $this->_extractAutoload($composer['autoload']);
 		}
 		if (!is_array($config['sources']))
 		{
@@ -54,18 +51,18 @@ class Configuration
 		foreach($config['sources'] as $key => $dir)
 		{
 			$dirFormatted = rtrim($dir, '/\\') . DIRECTORY_SEPARATOR;
-			$dirFormatted = preg_replace('~/\\\~', DIRECTORY_SEPARATOR, $dirFormatted);
+			$dirFormatted = preg_replace('~[\\\\/]~', DIRECTORY_SEPARATOR, $dirFormatted);
 			$config['sources'][$key] = $dirFormatted;
 		}
 		// Template
 		if(empty($config['template']))
 		{
-			$config['template'] = sprintf('%s/templates/default.html', realpath(__DIR__ . '/..'));
+			$config['template'] = sprintf('%s/templates/default.html', dirname(__DIR__));
 		}
 
 		if(empty($config['tmp']))
 		{
-			$config['tmp'] = sprintf('%s/tmp/', realpath(__DIR__ . '/..'));
+			$config['tmp'] = sprintf('%s/tmp/', dirname(__DIR__));
 		}
 
 		if(empty($composer['name']))
@@ -84,26 +81,19 @@ class Configuration
 	private function _loadComposerFile()
 	{
 		$file = sprintf('%s/composer.json', $this->dir);
-		$composer = file_exists($file) ? json_decode(file_get_contents($file), true) : array();
-		return $composer;
+		return file_exists($file) ? json_decode(file_get_contents($file), true, 512, JSON_THROW_ON_ERROR) : array();
 	}
 
 	private function _loadConfigFile()
 	{
 		$file = sprintf('%s/.hedron.yml', $this->dir);
-		$config = file_exists($file) ? Yaml::parse(file_get_contents($file)) : array();
-		return $config;
+		return file_exists($file) ? Yaml::parse(file_get_contents($file)) : array();
 	}
 
-	public function _extractAutoload($autoload)
+	public function _extractAutoload($autoload): array
 	{
-		$dirs = [];
-		if (isset($autoload->classmap))
-		{
-			$dirs = $autoload->classmap;
-		}
-		unset($autoload->classmap);
-		unset($autoload->files);
+		$dirs = $autoload->classmap ?? [];
+		unset($autoload->classmap, $autoload->files);
 
 		foreach ((array) $autoload as $psr)
 		{
