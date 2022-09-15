@@ -29,21 +29,15 @@ class Applier
 	 * Output
 	 * @var LoggerInterface
 	 */
-	private $output = null;
-
-	/**
-	 * Filter
-	 * @var Filter
-	 */
-	private $filter = null;
+	private LoggerInterface $output;
 
 	/**
 	 *
 	 * @var Renderer
 	 */
-	private $renderer = null;
-	private $success = [];
-	private $processed = 0;
+	private Renderer $renderer;
+	private array $success = [];
+	private int $processed = 0;
 
 	public function __construct(LoggerInterface $logger = null)
 	{
@@ -56,7 +50,7 @@ class Applier
 		$this->renderer = new Renderer($this->config);
 	}
 
-	public function apply()
+	public function apply(): void
 	{
 
 		foreach ($this->config['sources'] as $dir)
@@ -69,7 +63,7 @@ class Applier
 
 		// Notice
 		$this->output->info(sprintf('Processed <comment>%d</comment> files', $this->processed));
-		if (count($this->success) == array_sum($this->success))
+		if (count($this->success) === array_sum($this->success))
 		{
 			// Success
 			$this->output->info(sprintf('Modified <info>%d</info> files', array_sum($this->success)));
@@ -84,7 +78,7 @@ class Applier
 	/**
 	 * @return int
 	 */
-	public function listFiles()
+	public function listFiles(): int
 	{
 		$num = 0;
 		foreach ($this->config['sources'] as $dir)
@@ -110,7 +104,7 @@ class Applier
 	 * @param string $dir
 	 * @return string[]
 	 */
-	private function getFiles($dir)
+	private function getFiles(string $dir): array
 	{
 		$info = new \SplFileInfo($dir);
 		if($info->isFile())
@@ -119,14 +113,14 @@ class Applier
 		}
 		$finder = new Finder();
 
-		$this->filter = new Filter($dir, $this->config['filter'], $this->output);
+		$filter = new Filter($dir, $this->config['filter'], $this->output);
 
 		$result = [];
 
 		foreach ($finder->name('*.php')->files()->in($dir) as $entry)
 		{
 			/* @var $entry SplFileInfo */
-			if ($this->filter->isFiltered(realpath($entry->getPathname())))
+			if ($filter->isFiltered(realpath($entry->getPathname())))
 			{
 				continue;
 			}
@@ -135,7 +129,7 @@ class Applier
 
 			// Ignore views
 			$firstChar = basename($file)[0];
-			if (ctype_lower($firstChar) || '_' == $firstChar)
+			if ('_' === $firstChar || ctype_lower($firstChar))
 			{
 				continue;
 			}
@@ -145,7 +139,7 @@ class Applier
 		return $result;
 	}
 
-	private function applyHeaders($file, $checkOnly = false)
+	private function applyHeaders(string $file, bool $checkOnly = false): bool
 	{
 		$this->processed++;
 		$file = rtrim($file, '/\\');
@@ -163,7 +157,7 @@ class Applier
 			// Token value - which is not used in this case
 			array_shift($token);
 			$line = array_shift($token);
-			if ($type == T_NAMESPACE)
+			if ($type === T_NAMESPACE)
 			{
 				$ns = $tokens[$i + 2][1];
 				break;
@@ -192,18 +186,11 @@ class Applier
 		$new = sprintf("<?php$n$n%s$n$n%s", $this->renderer->render(), implode($n, $lines));
 		if ($checkOnly)
 		{
-			if ($new == $source)
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
+			return $new !== $source;
 		}
 		if (is_writable($file))
 		{
-			if ($new == $source)
+			if ($new === $source)
 			{
 				$success = true;
 			}
@@ -215,30 +202,24 @@ class Applier
 			if ($success)
 			{
 				// Success
-				if ($new == $source)
+				if ($new === $source)
 				{
 					$this->output->debug(sprintf('<comment>Skipped</comment> %s', $niceFile));
 					return false;
 				}
-				else
-				{
-					$this->output->info(sprintf('<info>Written</info> %s', $niceFile));
-					$this->success[] = true;
-					return true;
-				}
+
+				$this->output->info(sprintf('<info>Written</info> %s', $niceFile));
+				$this->success[] = true;
+				return true;
 			}
-			else
-			{
-				// Fail
-				$this->output->error(sprintf('Failed %s', $niceFile));
-				$this->success[] = false;
-				return false;
-			}
-		}
-		else
-		{
+
+			// Fail
+			$this->output->error(sprintf('Failed %s', $niceFile));
 			$this->success[] = false;
+			return false;
 		}
+
+		$this->success[] = false;
 		return false;
 	}
 
