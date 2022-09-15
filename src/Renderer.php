@@ -23,9 +23,9 @@ use Maslosoft\Hedron\Helpers\StringHelper;
 class Renderer
 {
 
-	private $config = [];
+	private array $config;
 	private $renderer;
-	private $path = '';
+	private string $path;
 
 	public function __construct($config)
 	{
@@ -33,7 +33,7 @@ class Renderer
 		$str = LightnCandy::compile(file_get_contents($this->config['template']));
 		$this->path = sprintf('%s.php', tempnam($config['tmp'], 'tpl'));
 		file_put_contents($this->path, sprintf("<?php\n%s", $str));
-		$this->renderer = require_once $this->path;
+		$this->renderer = require $this->path;
 	}
 
 	public function render($params = [])
@@ -63,7 +63,7 @@ class Renderer
 	/**
 	 * @param string $text
 	 */
-	private function _wrapWithStars(&$text)
+	private function _wrapWithStars(string &$text): void
 	{
 		$newline = StringHelper::detectNewline($text);
 		$text = preg_replace('~^(.*)~m', ' * \1', $text);
