@@ -1,7 +1,7 @@
 <!--header-->
 <!-- Auto generated do not modify between `header` and `/header` -->
 
-# <a href="https://maslosoft.com/hedron/">Maslosoft Hedron</a>
+# <a href="https://maslosoft.com/hedron/"><img src="https://maslosoft.com/hedron/hedron.svg" style="height:24px;" alt="Hedron Logo"></a> <a href="https://maslosoft.com/hedron/">Maslosoft Hedron</a>
 <a href="https://maslosoft.com/hedron/">_PHP source code class header applier_</a>
 
 <a href="https://packagist.org/packages/maslosoft/hedron" title="Latest Stable Version">
