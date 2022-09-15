@@ -46,7 +46,7 @@ class Filter
 	 * @param array                $config
 	 * @param LoggerInterface|null $output
 	 */
-	function __construct($workingDir, $config = [], LoggerInterface $output = null)
+	public function __construct($workingDir, $config = [], LoggerInterface $output = null)
 	{
 		$this->workingDir = $workingDir;
 		$this->filter = new FileFilter;
