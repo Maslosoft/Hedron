@@ -1,10 +1,12 @@
 <?php
 
 /**
- * This software package is licensed under `AGPL, Commercial` license[s].
+ * PHP source code class header applier
+ *
+ * This software package is licensed under `AGPL-3.0-only, proprietary` license[s].
  *
  * @package maslosoft/hedron
- * @license AGPL, Commercial
+ * @license AGPL-3.0-only, proprietary
  *
  * @copyright Copyright (c) Peter Maselkowski <pmaselkowski@gmail.com>
  * @link https://maslosoft.com/hedron/
