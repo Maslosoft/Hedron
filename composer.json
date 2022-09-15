@@ -32,6 +32,10 @@
 	}
 	,
 	"require-dev": {
-		"roave/security-advisories": "dev-latest"
+		"roave/security-advisories": "dev-latest",
+		"maslosoft/sitcom": "*"
+	},
+	"suggest": {
+		"maslosoft/sitcom": "Collect commands with signals"
 	}
 }

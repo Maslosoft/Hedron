@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56ccb8a7545f44c3a10738c3c9caee00",
+    "content-hash": "1862e3636a8b2619ee33c700b223923e",
     "packages": [
         {
             "name": "maslosoft/addendum",
@@ -1122,6 +1122,124 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "maslosoft/signals",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Signals.git",
+                "reference": "ed6600a45895376e361eef08b2bdc2543047704f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/ed6600a45895376e361eef08b2bdc2543047704f",
+                "reference": "ed6600a45895376e361eef08b2bdc2543047704f",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/addendum": "^7",
+                "maslosoft/cli-shared": "^1 | ^2",
+                "maslosoft/embedi": "^2",
+                "php": ">=7.4",
+                "psr/log": "^1|^2|^3",
+                "symfony/console": ">=2.7 <5.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4",
+                "codeception/module-asserts": "^2",
+                "codeception/specify": "^2",
+                "maslosoft/hedron": "^1 | ^2",
+                "maslosoft/sitcom": "^1 | ^2",
+                "maslosoft/zamm": "^1 | ^2"
+            },
+            "bin": [
+                "signals"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Signals\\": "src",
+                    "Maslosoft\\SignalsExamples\\": "examples",
+                    "Maslosoft\\SignalsTest\\Extensions\\": "tests/extensions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL-3.0-only",
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com",
+                    "homepage": "http://maslosoft.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Wireless Cross-Component Communication",
+            "homepage": "https://maslosoft.com/signals/",
+            "keywords": [
+                "event",
+                "events",
+                "signal",
+                "signals",
+                "slot",
+                "slots"
+            ],
+            "support": {
+                "issues": "https://github.com/Maslosoft/Signals/issues",
+                "source": "https://github.com/Maslosoft/Signals/tree/4.0.1"
+            },
+            "time": "2022-05-20T12:21:43+00:00"
+        },
+        {
+            "name": "maslosoft/sitcom",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Maslosoft/Sitcom.git",
+                "reference": "358349259d410c60701ec491658e73828baf2f0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Maslosoft/Sitcom/zipball/358349259d410c60701ec491658e73828baf2f0b",
+                "reference": "358349259d410c60701ec491658e73828baf2f0b",
+                "shasum": ""
+            },
+            "require": {
+                "maslosoft/signals": "*",
+                "symfony/console": ">=2.7 <5.0"
+            },
+            "require-dev": {
+                "maslosoft/hedron": "*"
+            },
+            "bin": [
+                "sitcom"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maslosoft\\Sitcom\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL",
+                "Commercial"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Maselkowski",
+                    "email": "pmaselkowski@gmail.com"
+                }
+            ],
+            "description": "Signals based console application wrapper",
+            "support": {
+                "issues": "https://github.com/Maslosoft/Sitcom/issues",
+                "source": "https://github.com/Maslosoft/Sitcom/tree/1.0.4"
+            },
+            "time": "2017-12-19T12:09:36+00:00"
+        },
         {
             "name": "roave/security-advisories",
             "version": "dev-latest",
