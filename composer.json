@@ -1,32 +1,36 @@
 {
-  "name": "maslosoft/hedron",
-  "description": "PHP source code class header applier",
-  "license": [
-    "AGPL-3.0-only",
-    "proprietary"
-  ],
-  "homepage": "https://maslosoft.com/hedron/",
-  "authors": [
-    {
-      "name": "Peter Maselkowski",
-      "email": "pmaselkowski@gmail.com"
-    }
-  ],
-  "bin": [
-    "hedron"
-  ],
-  "autoload": {
-    "psr-4": {
-      "Maslosoft\\Hedron\\": "src/"
-    }
-  },
-  "require": {
-    "symfony/console": ">=2.7 <5.0",
-    "symfony/finder": ">=2.7 <5.0",
-    "symfony/yaml": ">=2.7 <5.0",
-    "zordius/lightncandy": "^1",
-    "maslosoft/cli-shared": "*",
-    "maslosoft/addendum": "*",
-    "ext-json": "*"
-  }
+	"name": "maslosoft/hedron",
+	"description": "PHP source code class header applier",
+	"license": [
+		"AGPL-3.0-only",
+		"proprietary"
+	],
+	"homepage": "https://maslosoft.com/hedron/",
+	"authors": [
+		{
+			"name": "Peter Maselkowski",
+			"email": "pmaselkowski@gmail.com"
+		}
+	],
+	"bin": [
+		"hedron"
+	],
+	"autoload": {
+		"psr-4": {
+			"Maslosoft\\Hedron\\": "src/"
+		}
+	},
+	"require": {
+		"symfony/console": ">=2.7 <5.0",
+		"symfony/finder": ">=2.7 <5.0",
+		"symfony/yaml": ">=2.7 <5.0",
+		"zordius/lightncandy": "^1",
+		"maslosoft/cli-shared": "*",
+		"maslosoft/addendum": "*",
+		"ext-json": "*"
+	}
+	,
+	"require-dev": {
+		"roave/security-advisories": "dev-latest"
+	}
 }
