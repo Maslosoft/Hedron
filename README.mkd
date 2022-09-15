@@ -1,8 +1,8 @@
 <!--header-->
 <!-- Auto generated do not modify between `header` and `/header` -->
 
-# <a href="http://maslosoft.com/hedron/">Maslosoft Hedron</a>
-<a href="http://maslosoft.com/hedron/">_PHP source code class header applier_</a>
+# <a href="https://maslosoft.com/hedron/">Maslosoft Hedron</a>
+<a href="https://maslosoft.com/hedron/">_PHP source code class header applier_</a>
 
 <a href="https://packagist.org/packages/maslosoft/hedron" title="Latest Stable Version">
 <img src="https://poser.pugx.org/maslosoft/hedron/v/stable.svg" alt="Latest Stable Version" style="height: 20px;"/>
@@ -15,6 +15,27 @@
 ```bash
 composer require maslosoft/hedron
 ```
+
+### Documentation
+
+<a href="https://maslosoft.com/hedron/docs/">Full Hedron Documentation</a>
+
+
+
+
+
+# Keeping class headers consitent
+
+When developing projects, we ofter require that file
+containing PHP class should have some predefined
+comment header. This might include package information,
+licensing, homepage address etc.
+
+### Apply all at once
+
+This tools provides facility to modify class headers
+in entire project in a safe way - using PHP Tokenizer,
+so that it will only modify file if it's 100% safe to change it.
 
 <!--/header-->
 
