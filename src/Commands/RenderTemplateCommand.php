@@ -30,7 +30,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RenderTemplateCommand extends ConsoleCommand implements AnnotatedInterface
 {
 
-	protected function configure()
+	protected function configure(): void
 	{
 		$this->setName("show");
 		$this->setDescription("Show how current template will look like");
@@ -44,7 +44,7 @@ EOT;
 		$this->setHelp($help);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): void
 	{
 		$output->writeln("This is how template will look like in files:");
 		$renderer = new Renderer((new Configuration)->load());
@@ -55,7 +55,7 @@ EOT;
 	 * @SlotFor(Command)
 	 * @param Command $signal
 	 */
-	public function reactOn(Command $signal)
+	public function reactOn(Command $signal): void
 	{
 		$signal->add($this, 'hedron');
 	}
