@@ -18,14 +18,14 @@ use Maslosoft\Addendum\Interfaces\AnnotatedInterface;
 use Maslosoft\Cli\Shared\Log\Logger;
 use Maslosoft\Hedron\Applier;
 use Maslosoft\Sitcom\Command;
-use Symfony\Component\Console\Command\Command as ConsoleComand;
+use Symfony\Component\Console\Command\Command as ConsoleCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ApplyCommand extends ConsoleComand implements AnnotatedInterface
+class ApplyCommand extends ConsoleCommand implements AnnotatedInterface
 {
 
-	protected function configure()
+	protected function configure(): void
 	{
 		$this->setName("commit");
 		$this->setDescription("Apply headers to all php classes");
@@ -48,7 +48,7 @@ EOT;
 	 * @SlotFor(Command)
 	 * @param Command $signal
 	 */
-	public function reactOn(Command $signal)
+	public function reactOn(Command $signal): void
 	{
 		$signal->add($this, 'hedron');
 	}
