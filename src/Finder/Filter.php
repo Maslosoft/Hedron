@@ -29,29 +29,29 @@ class Filter
 	 * Filter instance
 	 * @var FileFilter
 	 */
-	private $filter = null;
+	private FileFilter $filter;
 
-	private $workingDir = null;
+	private string $workingDir;
 
 	/**
 	 * @var LoggerInterface
 	 */
-	private $output = null;
+	private LoggerInterface $output;
 
 	/**
 	 * Filter
 	 *
-	 * @author Piotr Maselkowski <pmaselkowski at gmail.com>
-	 * @param                      $workingDir
+	 * @param string               $workingDir
 	 * @param array                $config
 	 * @param LoggerInterface|null $output
+	 * @author Piotr Maselkowski <pmaselkowski at gmail.com>
 	 */
-	public function __construct($workingDir, $config = [], LoggerInterface $output = null)
+	public function __construct(string $workingDir, array $config = [], LoggerInterface $output = null)
 	{
 		$this->workingDir = $workingDir;
 		$this->filter = new FileFilter;
 
-		if (empty($output))
+		if ($output === null)
 		{
 			$output = new NullLogger;
 		}
@@ -60,7 +60,7 @@ class Filter
 		$this->whiteList($config)->blackList($config);
 	}
 
-	public function isFiltered($filename)
+	public function isFiltered($filename): bool
 	{
 		return $this->filter->isFiltered($filename);
 	}
@@ -69,7 +69,7 @@ class Filter
 	 * @param $config
 	 * @return Filter
 	 */
-	protected function whiteList($config)
+	protected function whiteList($config): Filter
 	{
 		$filter = $this->filter;
 		if (!isset($config['whitelist']))
@@ -125,7 +125,7 @@ class Filter
 	 * @param $config
 	 * @return Filter
 	 */
-	protected function blackList($config)
+	protected function blackList($config): Filter
 	{
 		$filter = $this->filter;
 		if (isset($config['blacklist']))
@@ -173,7 +173,7 @@ class Filter
 	 * @throws InvalidArgumentException
 	 * @return Finder
 	 */
-	protected function matchWildcardPattern($pattern)
+	protected function matchWildcardPattern($pattern): Finder
 	{
 		$finder = Finder::create();
 		$fileOrDir = str_replace('\\', '/', $pattern);
@@ -199,16 +199,16 @@ class Filter
 	/**
 	 * @return FileFilter
 	 */
-	public function getFilter()
+	public function getFilter(): FileFilter
 	{
 		return $this->filter;
 	}
 
 	/**
 	 * Handle exception
-	 * @param $e
+	 * @param Exception $e
 	 */
-	private function handle(Exception $e)
+	private function handle(Exception $e): void
 	{
 		$this->output->error(sprintf('<error>%s</error> <info>This will be skipped, rest operations should succeed.</info>', $e->getMessage()));
 	}
