@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "maslosoft/addendum",
-            "version": "7.0.3",
+            "version": "7.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Addendum.git",
-                "reference": "f4cabd6ab500f7803aa7be4c60a52f4cd8c3dffd"
+                "reference": "533ec1db4459104d9ee317c03f811345c2d5c6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/f4cabd6ab500f7803aa7be4c60a52f4cd8c3dffd",
-                "reference": "f4cabd6ab500f7803aa7be4c60a52f4cd8c3dffd",
+                "url": "https://api.github.com/repos/Maslosoft/Addendum/zipball/533ec1db4459104d9ee317c03f811345c2d5c6e1",
+                "reference": "533ec1db4459104d9ee317c03f811345c2d5c6e1",
                 "shasum": ""
             },
             "require": {
@@ -32,10 +32,13 @@
                 "codeception/codeception": "^4",
                 "codeception/module-asserts": "^2",
                 "codeception/specify": "^2",
-                "maslosoft/hedron": "^1 || ^2",
-                "maslosoft/zamm": "^1 || ^2"
+                "maslosoft/signals": "*@dev",
+                "maslosoft/zamm": "^1 || ^2",
+                "monolog/monolog": "^2",
+                "roave/security-advisories": "dev-latest"
             },
             "suggest": {
+                "maslosoft/signals": "Collect annotation namespaces with signals",
                 "monolog/monolog": "Sends your logs to files, sockets, inboxes, databases and various web services"
             },
             "type": "library",
@@ -71,29 +74,40 @@
             ],
             "support": {
                 "issues": "https://github.com/Maslosoft/Addendum/issues",
-                "source": "https://github.com/Maslosoft/Addendum/tree/7.0.3"
+                "source": "https://github.com/Maslosoft/Addendum/tree/7.0.4"
             },
-            "time": "2022-05-20T12:17:04+00:00"
+            "time": "2022-09-15T13:10:43+00:00"
         },
         {
             "name": "maslosoft/cache",
-            "version": "1.0.11",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "peter@git.maslosoft.com:/git/Maslosoft/cache.git",
-                "reference": "2a6d57710a99a1ffa2e252314a10e3237bb609a2"
+                "reference": "15396befe54ca4f85be21e0c9b6485cb9d0df79d"
             },
             "require": {
-                "maslosoft/embedi": "*"
+                "maslosoft/embedi": "^1|^2|^3",
+                "php": ">=7.4"
             },
             "require-dev": {
-                "maslosoft/cachetest": "dev-master",
-                "maslosoft/hedron": "^1"
+                "codeception/codeception": "^5",
+                "codeception/module-asserts": "^3",
+                "ext-json": "*"
+            },
+            "suggest": {
+                "ext-apcu": "Use APCu as cache",
+                "ext-memcached": "Use Memcached as cache"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Maslosoft\\Cache\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Maslosoft\\CacheTest\\Testers\\": "tests/testers"
                 }
             },
             "license": [
@@ -108,20 +122,20 @@
             ],
             "description": "Easy to use, auto configurable, extensible cache provider",
             "homepage": "https://maslosoft.com/cache/",
-            "time": "2017-11-19T22:25:52+00:00"
+            "time": "2022-10-06T15:56:17+00:00"
         },
         {
             "name": "maslosoft/cli-shared",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/CLIShared.git",
-                "reference": "84e64cf78f7e74f469c7ee84a732141d18439541"
+                "reference": "c1b65518cd628e45a803abe132f1e1399a23dcbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/84e64cf78f7e74f469c7ee84a732141d18439541",
-                "reference": "84e64cf78f7e74f469c7ee84a732141d18439541",
+                "url": "https://api.github.com/repos/Maslosoft/CLIShared/zipball/c1b65518cd628e45a803abe132f1e1399a23dcbe",
+                "reference": "c1b65518cd628e45a803abe132f1e1399a23dcbe",
                 "shasum": ""
             },
             "require": {
@@ -131,10 +145,8 @@
                 "symfony/yaml": ">=2.7 <5.0"
             },
             "require-dev": {
-                "codeception/codeception": "^4",
-                "codeception/module-asserts": "^1.0.0",
-                "codeception/module-phpbrowser": "^1.0.0",
-                "maslosoft/hedron": "*",
+                "codeception/codeception": "^5",
+                "codeception/module-asserts": "^3",
                 "maslosoft/zamm": "*"
             },
             "type": "library",
@@ -155,6 +167,7 @@
                 }
             ],
             "description": "Shared CLI application components",
+            "homepage": "https://maslosoft.com/cli-shared/",
             "keywords": [
                 "cli",
                 "command-line",
@@ -162,31 +175,31 @@
                 "php"
             ],
             "support": {
-                "issues": "https://github.com/Maslosoft/CLIShared/issues",
-                "source": "https://github.com/Maslosoft/CLIShared/tree/1.0.8"
+                "docs": "https://maslosoft.com/cli-shared/docs/",
+                "issues": "https://github.com/Maslosoft/CliShared/issues",
+                "source": "https://github.com/Maslosoft/CLIShared/tree/1.0.9"
             },
-            "time": "2022-07-05T18:33:50+00:00"
+            "time": "2022-10-06T14:59:14+00:00"
         },
         {
             "name": "maslosoft/embedi",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/EmbeDi.git",
-                "reference": "7d3ec90a352e3f5722de9df89233924c7be68260"
+                "reference": "20e35d2dca2de6a56707ee02af07ebcbf7e4c531"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/7d3ec90a352e3f5722de9df89233924c7be68260",
-                "reference": "7d3ec90a352e3f5722de9df89233924c7be68260",
+                "url": "https://api.github.com/repos/Maslosoft/EmbeDi/zipball/20e35d2dca2de6a56707ee02af07ebcbf7e4c531",
+                "reference": "20e35d2dca2de6a56707ee02af07ebcbf7e4c531",
                 "shasum": ""
             },
             "require-dev": {
-                "codeception/codeception": "*",
+                "codeception/codeception": "^4",
                 "codeception/module-asserts": "^2.0",
                 "codeception/specify": "*",
-                "maslosoft/hedron": "~1",
-                "maslosoft/zamm": "dev-master",
+                "maslosoft/zamm": "*",
                 "yiisoft/yii": "~1"
             },
             "type": "library",
@@ -208,38 +221,37 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Embedded DI container",
+            "description": "Embedded Dependency Injection container",
             "homepage": "https://maslosoft.com/embedi/",
             "support": {
                 "issues": "https://github.com/Maslosoft/EmbeDi/issues",
-                "source": "https://github.com/Maslosoft/EmbeDi/tree/2.0.0"
+                "source": "https://github.com/Maslosoft/EmbeDi/tree/2.0.1"
             },
-            "time": "2022-02-22T16:29:28+00:00"
+            "time": "2022-09-15T13:28:50+00:00"
         },
         {
             "name": "maslosoft/gazebo",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Gazebo.git",
-                "reference": "d73a1bae0b5cca4ac5020eb239945e98be0bd0bf"
+                "reference": "cbfd5003a750fa5fb6fa24207ae1cda85b0184a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Gazebo/zipball/d73a1bae0b5cca4ac5020eb239945e98be0bd0bf",
-                "reference": "d73a1bae0b5cca4ac5020eb239945e98be0bd0bf",
+                "url": "https://api.github.com/repos/Maslosoft/Gazebo/zipball/cbfd5003a750fa5fb6fa24207ae1cda85b0184a7",
+                "reference": "cbfd5003a750fa5fb6fa24207ae1cda85b0184a7",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
+                "maslosoft/addendum": "*",
                 "maslosoft/embedi": "*",
                 "php": ">=7.4"
             },
             "require-dev": {
-                "codeception/codeception": "^4",
-                "codeception/module-asserts": "^2.0",
-                "codeception/specify": "^2",
-                "maslosoft/hedron": "^1"
+                "codeception/codeception": "^5",
+                "codeception/module-asserts": "^3"
             },
             "type": "library",
             "autoload": {
@@ -262,9 +274,9 @@
             "homepage": "https://maslosoft.com/gazebo/",
             "support": {
                 "issues": "https://github.com/Maslosoft/Gazebo/issues",
-                "source": "https://github.com/Maslosoft/Gazebo/tree/2.0.1"
+                "source": "https://github.com/Maslosoft/Gazebo/tree/2.0.2"
             },
-            "time": "2022-02-23T17:50:30+00:00"
+            "time": "2022-10-06T16:45:18+00:00"
         },
         {
             "name": "psr/container",
@@ -1123,95 +1135,24 @@
     ],
     "packages-dev": [
         {
-            "name": "maslosoft/signals",
-            "version": "4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Maslosoft/Signals.git",
-                "reference": "ed6600a45895376e361eef08b2bdc2543047704f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Signals/zipball/ed6600a45895376e361eef08b2bdc2543047704f",
-                "reference": "ed6600a45895376e361eef08b2bdc2543047704f",
-                "shasum": ""
-            },
-            "require": {
-                "maslosoft/addendum": "^7",
-                "maslosoft/cli-shared": "^1 | ^2",
-                "maslosoft/embedi": "^2",
-                "php": ">=7.4",
-                "psr/log": "^1|^2|^3",
-                "symfony/console": ">=2.7 <5.0"
-            },
-            "require-dev": {
-                "codeception/codeception": "^4",
-                "codeception/module-asserts": "^2",
-                "codeception/specify": "^2",
-                "maslosoft/hedron": "^1 | ^2",
-                "maslosoft/sitcom": "^1 | ^2",
-                "maslosoft/zamm": "^1 | ^2"
-            },
-            "bin": [
-                "signals"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Maslosoft\\Signals\\": "src",
-                    "Maslosoft\\SignalsExamples\\": "examples",
-                    "Maslosoft\\SignalsTest\\Extensions\\": "tests/extensions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL-3.0-only",
-                "proprietary"
-            ],
-            "authors": [
-                {
-                    "name": "Peter Maselkowski",
-                    "email": "pmaselkowski@gmail.com",
-                    "homepage": "http://maslosoft.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Wireless Cross-Component Communication",
-            "homepage": "https://maslosoft.com/signals/",
-            "keywords": [
-                "event",
-                "events",
-                "signal",
-                "signals",
-                "slot",
-                "slots"
-            ],
-            "support": {
-                "issues": "https://github.com/Maslosoft/Signals/issues",
-                "source": "https://github.com/Maslosoft/Signals/tree/4.0.1"
-            },
-            "time": "2022-05-20T12:21:43+00:00"
-        },
-        {
             "name": "maslosoft/sitcom",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maslosoft/Sitcom.git",
-                "reference": "358349259d410c60701ec491658e73828baf2f0b"
+                "reference": "f013958effc3e052306911ddfb27eecc6876386c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maslosoft/Sitcom/zipball/358349259d410c60701ec491658e73828baf2f0b",
-                "reference": "358349259d410c60701ec491658e73828baf2f0b",
+                "url": "https://api.github.com/repos/Maslosoft/Sitcom/zipball/f013958effc3e052306911ddfb27eecc6876386c",
+                "reference": "f013958effc3e052306911ddfb27eecc6876386c",
                 "shasum": ""
             },
             "require": {
-                "maslosoft/signals": "*",
-                "symfony/console": ">=2.7 <5.0"
+                "symfony/console": ">=2.7 <=6.0"
             },
             "require-dev": {
-                "maslosoft/hedron": "*"
+                "roave/security-advisories": "dev-latest"
             },
             "bin": [
                 "sitcom"
@@ -1234,11 +1175,12 @@
                 }
             ],
             "description": "Signals based console application wrapper",
+            "homepage": "https://maslosoft.com/sitcom/",
             "support": {
                 "issues": "https://github.com/Maslosoft/Sitcom/issues",
-                "source": "https://github.com/Maslosoft/Sitcom/tree/1.0.4"
+                "source": "https://github.com/Maslosoft/Sitcom/tree/1.0.5"
             },
-            "time": "2017-12-19T12:09:36+00:00"
+            "time": "2022-10-06T16:29:28+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -1246,12 +1188,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "2481df8dc4eed2f379e486ad9c9435371a378f96"
+                "reference": "b0d3e99ce9c8ec237338a70277dd409ffcf6cedc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/2481df8dc4eed2f379e486ad9c9435371a378f96",
-                "reference": "2481df8dc4eed2f379e486ad9c9435371a378f96",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/b0d3e99ce9c8ec237338a70277dd409ffcf6cedc",
+                "reference": "b0d3e99ce9c8ec237338a70277dd409ffcf6cedc",
                 "shasum": ""
             },
             "conflict": {
@@ -1272,6 +1214,7 @@
                 "appwrite/server-ce": "<0.11.1|>=0.12,<0.12.2",
                 "area17/twill": "<1.2.5|>=2,<2.5.3",
                 "asymmetricrypt/asymmetricrypt": ">=0,<9.9.99",
+                "awesome-support/awesome-support": "<=6.0.7",
                 "aws/aws-sdk-php": ">=3,<3.2.1",
                 "bagisto/bagisto": "<0.1.5",
                 "barrelstrength/sprout-base-email": "<1.2.7",
@@ -1297,7 +1240,7 @@
                 "cart2quote/module-quotation": ">=4.1.6,<=4.4.5|>=5,<5.4.4",
                 "cartalyst/sentry": "<=2.1.6",
                 "catfan/medoo": "<1.7.5",
-                "centreon/centreon": "<20.10.7",
+                "centreon/centreon": "<21.4.16|>=21.10,<21.10.8|>=22,<22.4.1",
                 "cesnet/simplesamlphp-module-proxystatistics": "<3.1",
                 "codeception/codeception": "<3.1.3|>=4,<4.1.22",
                 "codeigniter/framework": "<=3.0.6",
@@ -1313,7 +1256,7 @@
                 "contao/core-bundle": "<4.9.18|>=4.10,<4.11.7|>=4.13,<4.13.3|= 4.10.0",
                 "contao/listing-bundle": ">=4,<4.4.8",
                 "contao/managed-edition": "<=1.5",
-                "craftcms/cms": "<3.7.36",
+                "craftcms/cms": "<3.7.55.2|>= 4.0.0-RC1, < 4.2.1",
                 "croogo/croogo": "<3.0.7",
                 "cuyz/valinor": "<0.12",
                 "czproject/git-php": "<4.0.3",
@@ -1332,7 +1275,7 @@
                 "doctrine/mongodb-odm-bundle": ">=2,<3.0.1",
                 "doctrine/orm": ">=2,<2.4.8|>=2.5,<2.5.1|>=2.8.3,<2.8.4",
                 "dolibarr/dolibarr": "<16|= 12.0.5|>= 3.3.beta1, < 13.0.2",
-                "dompdf/dompdf": "<2",
+                "dompdf/dompdf": "<2.0.1",
                 "drupal/core": ">=7,<7.91|>=8,<9.3.19|>=9.4,<9.4.3",
                 "drupal/drupal": ">=7,<7.80|>=8,<8.9.16|>=9,<9.1.12|>=9.2,<9.2.4",
                 "dweeves/magmi": "<=0.7.24",
@@ -1344,6 +1287,8 @@
                 "enshrined/svg-sanitize": "<0.15",
                 "erusev/parsedown": "<1.7.2",
                 "ether/logs": "<3.0.4",
+                "exceedone/exment": "<4.4.3|>=5,<5.0.3",
+                "exceedone/laravel-admin": "= 3.0.0|<2.2.3",
                 "ezsystems/demobundle": ">=5.4,<5.4.6.1",
                 "ezsystems/ez-support-tools": ">=2.2,<2.2.3",
                 "ezsystems/ezdemo-ls-extension": ">=5.4,<5.4.2.1",
@@ -1363,7 +1308,7 @@
                 "facade/ignition": "<1.16.15|>=2,<2.4.2|>=2.5,<2.5.2",
                 "facturascripts/facturascripts": "<=2022.8",
                 "feehi/cms": "<=2.1.1",
-                "feehi/feehicms": "<=0.1.3",
+                "feehi/feehicms": "<=2.0.1.1",
                 "fenom/fenom": "<=2.12.1",
                 "filegator/filegator": "<7.8",
                 "firebase/php-jwt": "<2",
@@ -1382,7 +1327,7 @@
                 "friendsofsymfony/user-bundle": ">=1.2,<1.3.5",
                 "friendsoftypo3/mediace": ">=7.6.2,<7.6.5",
                 "froala/wysiwyg-editor": "<3.2.7",
-                "froxlor/froxlor": "<=0.10.22",
+                "froxlor/froxlor": "<0.10.38",
                 "fuel/core": "<1.8.1",
                 "gaoming13/wechat-php-sdk": "<=1.10.2",
                 "genix/cms": "<=1.1.11",
@@ -1447,7 +1392,7 @@
                 "league/commonmark": "<0.18.3",
                 "league/flysystem": "<1.1.4|>=2,<2.1.1",
                 "lexik/jwt-authentication-bundle": "<2.10.7|>=2.11,<2.11.3",
-                "librenms/librenms": "<22.4",
+                "librenms/librenms": "<=22.8",
                 "limesurvey/limesurvey": "<3.27.19",
                 "livehelperchat/livehelperchat": "<=3.91",
                 "livewire/livewire": ">2.2.4,<2.2.6",
@@ -1463,7 +1408,7 @@
                 "mautic/core": "<4.3|= 2.13.1",
                 "mediawiki/core": ">=1.27,<1.27.6|>=1.29,<1.29.3|>=1.30,<1.30.2|>=1.31,<1.31.9|>=1.32,<1.32.6|>=1.32.99,<1.33.3|>=1.33.99,<1.34.3|>=1.34.99,<1.35",
                 "mezzio/mezzio-swoole": "<3.7|>=4,<4.3",
-                "microweber/microweber": "<1.3.1",
+                "microweber/microweber": "<=1.3.1",
                 "miniorange/miniorange-saml": "<1.4.3",
                 "mittwald/typo3_forum": "<1.2.1",
                 "modx/revolution": "<= 2.8.3-pl|<2.8",
@@ -1526,13 +1471,13 @@
                 "phpwhois/phpwhois": "<=4.2.5",
                 "phpxmlrpc/extras": "<0.6.1",
                 "pimcore/data-hub": "<1.2.4",
-                "pimcore/pimcore": "<10.4.4",
+                "pimcore/pimcore": "<=10.5.6",
                 "pocketmine/bedrock-protocol": "<8.0.2",
                 "pocketmine/pocketmine-mp": "<4.7.2|>= 4.0.0-BETA5, < 4.4.2",
                 "pressbooks/pressbooks": "<5.18",
                 "prestashop/autoupgrade": ">=4,<4.10.1",
                 "prestashop/blockwishlist": ">=2,<2.1.1",
-                "prestashop/contactform": ">1.0.1,<4.3",
+                "prestashop/contactform": ">=1.0.1,<4.3",
                 "prestashop/gamification": "<2.3.2",
                 "prestashop/prestashop": ">=1.6.0.10,<1.7.8.7",
                 "prestashop/productcomments": "<5.0.2",
@@ -1547,6 +1492,8 @@
                 "pusher/pusher-php-server": "<2.2.1",
                 "pwweb/laravel-core": "<=0.3.6-beta",
                 "rainlab/debugbar-plugin": "<3.1",
+                "rankmath/seo-by-rank-math": "<=1.0.95",
+                "react/http": ">=0.7,<1.7",
                 "remdex/livehelperchat": "<3.99",
                 "rmccue/requests": ">=1.6,<1.8",
                 "robrichards/xmlseclibs": "<3.0.4",
@@ -1561,7 +1508,7 @@
                 "shopware/core": "<=6.4.9",
                 "shopware/platform": "<=6.4.9",
                 "shopware/production": "<=6.3.5.2",
-                "shopware/shopware": "<=5.7.13",
+                "shopware/shopware": "<=5.7.14",
                 "shopware/storefront": "<=6.4.8.1",
                 "shopxo/shopxo": "<2.2.6",
                 "showdoc/showdoc": "<2.10.4",
@@ -1585,8 +1532,8 @@
                 "simplesamlphp/simplesamlphp-module-infocard": "<1.0.1",
                 "simplito/elliptic-php": "<1.0.6",
                 "slim/slim": "<2.6",
-                "smarty/smarty": "<3.1.45|>=4,<4.1.1",
-                "snipe/snipe-it": "<6.0.10|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
+                "smarty/smarty": "<3.1.47|>=4,<4.2.1",
+                "snipe/snipe-it": "<6.0.11|>= 6.0.0-RC-1, <= 6.0.0-RC-5",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "spipu/html2pdf": "<5.2.4",
@@ -1648,15 +1595,15 @@
                 "thinkcmf/thinkcmf": "<=5.1.7",
                 "tinymce/tinymce": "<5.10",
                 "titon/framework": ">=0,<9.9.99",
-                "topthink/framework": "<=6.0.12",
+                "topthink/framework": "<=6.0.13",
                 "topthink/think": "<=6.0.9",
                 "topthink/thinkphp": "<=3.2.3",
                 "tribalsystems/zenario": "<9.2.55826",
                 "truckersmp/phpwhois": "<=4.3.1",
-                "twig/twig": "<1.38|>=2,<2.14.11|>=3,<3.3.8",
+                "twig/twig": "<1.44.7|>=2,<2.15.3|>=3,<3.4.3",
                 "typo3/cms": ">=6.2,<6.2.30|>=7,<7.6.32|>=8,<8.7.38|>=9,<9.5.29|>=10,<10.4.32|>=11,<11.5.16",
                 "typo3/cms-backend": ">=7,<=7.6.50|>=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
-                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<=7.6.57|>=8,<=8.7.47|>=9,<=9.5.36|>=10,<10.4.32|>=11,<11.5.16",
+                "typo3/cms-core": ">=6.2,<=6.2.56|>=7,<7.6.58|>=8,<8.7.48|>=9,<9.5.37|>=10,<10.4.32|>=11,<11.5.16",
                 "typo3/cms-form": ">=8,<=8.7.39|>=9,<=9.5.24|>=10,<=10.4.13|>=11,<=11.1",
                 "typo3/flow": ">=1,<1.0.4|>=1.1,<1.1.1|>=2,<2.0.1|>=2.3,<2.3.16|>=3,<3.0.12|>=3.1,<3.1.10|>=3.2,<3.2.13|>=3.3,<3.3.13|>=4,<4.0.6",
                 "typo3/html-sanitizer": ">=1,<1.0.7|>=2,<2.0.16",
@@ -1665,7 +1612,7 @@
                 "typo3/swiftmailer": ">=4.1,<4.1.99|>=5.4,<5.4.5",
                 "typo3fluid/fluid": ">=2,<2.0.8|>=2.1,<2.1.7|>=2.2,<2.2.4|>=2.3,<2.3.7|>=2.4,<2.4.4|>=2.5,<2.5.11|>=2.6,<2.6.10",
                 "ua-parser/uap-php": "<3.8",
-                "unisharp/laravel-filemanager": "<=2.3",
+                "unisharp/laravel-filemanager": "<=2.5.1",
                 "userfrosting/userfrosting": ">=0.3.1,<4.6.3",
                 "usmanhalalit/pixie": "<1.0.3|>=2,<2.0.2",
                 "vanilla/safecurl": "<0.9.2",
@@ -1684,7 +1631,7 @@
                 "wpanel/wpanel4-cms": "<=4.3.1",
                 "wwbn/avideo": "<=11.6",
                 "yeswiki/yeswiki": "<4.1",
-                "yetiforce/yetiforce-crm": "<6.4",
+                "yetiforce/yetiforce-crm": "<=6.4",
                 "yidashi/yii2cmf": "<=2",
                 "yii2mod/yii2-cms": "<1.9.2",
                 "yiisoft/yii": ">=1.1.14,<1.1.15",
@@ -1758,7 +1705,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-09-15T04:37:09+00:00"
+            "time": "2022-10-05T15:07:13+00:00"
         }
     ],
     "aliases": [],
