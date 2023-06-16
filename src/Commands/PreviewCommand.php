@@ -44,7 +44,7 @@ EOT;
 		$this->setHelp($help);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		$output->writeln("Following files will be processed:");
 		$logger = new Logger($output);
@@ -59,6 +59,7 @@ EOT;
 			// Use output writeln to always show message
 			$output->writeln("Total of <info>$modified</info> files will be updated");
 		}
+		return 1;
 	}
 
 	/**

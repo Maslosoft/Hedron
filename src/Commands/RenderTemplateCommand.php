@@ -44,11 +44,12 @@ EOT;
 		$this->setHelp($help);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output): void
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		$output->writeln("This is how template will look like in files:");
 		$renderer = new Renderer((new Configuration)->load());
 		$output->writeln($renderer->render());
+		return 1;
 	}
 
 	/**

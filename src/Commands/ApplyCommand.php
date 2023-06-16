@@ -38,10 +38,11 @@ EOT;
 		$this->setHelp($help);
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
 		$logger = new Logger($output);
 		(new Applier($logger))->apply();
+		return 1;
 	}
 
 	/**
